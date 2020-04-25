@@ -14,11 +14,10 @@ public class CrimeometerResource {
 	private static final String Crimeometer_API_KEY = "07cecfd3cd97455b87fae72871cefe05";
 	private static final Logger log = Logger.getLogger(CrimeometerResource.class.getName());
 	
-	public CrimeometerLLSearch getCrimeData(String query) throws UnsupportedEncodingException {
+	public CrimeometerLLSearch getCrimeData(Double lat, Double lon) throws UnsupportedEncodingException {
 		
 		//PONER LOS HEADERS PARA APIKEY
-		String queryFormatted = URLEncoder.encode(query, "UTF-8");
-		String uri = "http://api.crimeometer.com/v1/incidents/raw-data?lat=" + queryFormatted + "&lon=" + queryFormatted + "&distance=15km&datetime_ini=2019-04-20T15:53:00.000Z&datetime_end=2020-04-20T15:53:00.000Z";
+		String uri = "http://api.crimeometer.com/v1/incidents/raw-data?lat=" + lat + "&lon=" + lon + "&distance=30km&datetime_ini=2019-04-20T15:53:00.000Z&datetime_end=2020-04-20T15:53:00.000Z";
 				
 		log.log(Level.FINE, "Crimeometer URI: " + uri);
 		

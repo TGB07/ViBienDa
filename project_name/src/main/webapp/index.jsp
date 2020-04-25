@@ -24,8 +24,8 @@
 		
 		<div class="searchbar">
 			<img src="" alt="logo"></img>
-			<form class="search" action="REDIRECCION" method="post">
-				<input name="bar" type="text" value="Introduzca el nombre de una localización">
+			<form class="search" action="/SearchController" method="post">
+				<input name="bar" type="text" placeholder="Introduzca el nombre de una localización">
 			</form>
 		</div>
 	</body>
