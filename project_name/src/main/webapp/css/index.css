@@ -1,0 +1,91 @@
+.wrapper{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	
+	display: grid;
+	grid-template-areas: "top-nav"
+						 "title"
+						 "queEsVibienda"
+						 "sobreNosotros";
+	grid-template-rows: 55px 720px 720px 720px;
+	
+}
+*::-webkit-scrollbar{
+	width: 0px;
+
+}
+nav{
+	grid-area: top-nav;
+}
+/*
+PANTALLA PRINCIPAL
+*/
+.title{
+	grid-area: title;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: grey;
+}
+.title img{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	opacity: 0.6;
+	z-index: 0;
+}
+.title h1{
+	position: absolute;
+	top: 200px;
+	font-size: 80px;
+	color: white;
+}
+.title .searchbar{
+	width: 50%;
+	z-index: 1;
+}
+.title .searchbar input{
+	width: 95%;
+	border-radius: 50px;
+	border: 1px solid black;
+	padding-left: 10px;
+}
+.title .searchbar input:focus{
+	border: 1px solid blue;
+}
+.title .searchbar button{
+	position: absolute;
+	margin-left: 10px;
+	height: 30px;
+	width: 30px;
+	border-radius: 100%;
+	border: none;
+	color: white;
+	background-color: RoyalBlue;
+}
+.title .mapButton{
+	position: absolute;
+	bottom: 300px;
+}
+/*
+QUE ES VIBIENDA
+*/
+.queEs{
+	grid-area: queEsVibienda;
+}
+/*
+SOBRE NOSOTROS
+*/
+.aboutUs{
+	grid-area: sobreNosotros;
+	background-color: grey;
+}
