@@ -44,7 +44,7 @@
 				</form>
 			</div>			
 			<div class="mapButton">
-				<form action="/searchMapView.jsp">
+				<form action="/searchMapView.jsp" method = post>
 					<input type="submit" value="Mapa interativo" name="mapBtn">
 				</form>
 			</div>		
