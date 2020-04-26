@@ -49,18 +49,6 @@
 				</form>
 			</div>		
 		</div>
-	<!-- NAV-BAR -->
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-		  	<a class="navbar-brand" href="#">Home</a>
-		  	<ul class="navbar-nav">
-		    	<li class="nav-item">
-		      		<a class="nav-link" href="#">Ranking</a>
-		    	</li>
-		    	<li class="nav-item">
-		      		<a class="nav-link" href="#">FAQ</a>
-		    	</li>
-		  	</ul>
-		</nav>
 		
 		<!-- QUE ES VIBIENDA -->
 		<div class="queEs">
@@ -83,13 +71,7 @@
 			</div>
 		</div>
 
-
-	
-	</div>		
-		<div class="mapButton">
-			<form action="/searchMapView.jsp">
-				<input type="submit" value="Mapa interativo" name="mapBtn">
-			</form>
-		</div>
+	</div>	
+		
 	</body>
 </html>
