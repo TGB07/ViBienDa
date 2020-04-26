@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
+<html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title>ViBienDa</title>
@@ -24,7 +26,7 @@
 		
 		<div class="searchbar">
 			<img src="" alt="logo"></img>
-			<form class="search" action="/SearchController" method="post">
+			<form class="search" action="SearchController" method="post">
 				<input name="bar" type="text" placeholder="Introduzca el nombre de una localización">
 			</form>
 		</div>
