@@ -41,6 +41,7 @@ public class SearchController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
+		
 //		String query = request.getParameter("reqVal");	//	Tomamos la query del input con name bar que forma la search bar
 //		System.out.println("============================================================================"+query);
 //		String[] s = query.split(";");
