@@ -47,7 +47,6 @@ public class SearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
 		String query = request.getParameter("bar");	//	Tomamos la query del input con name bar que forma la search bar
-
 		
 		//	Load coordinates
 		OpenCageResource ocResource = new OpenCageResource();
@@ -93,10 +92,10 @@ public class SearchController extends HttpServlet {
 //			request.setAttribute("incidentes", incidenteTotal);
 			
 			//	Load recommended venues
+			
 			FoursquareResource fsResource = new FoursquareResource();
 			FoursquareSearch fsSearch = fsResource.getRecommendedVenues(lat, lon);
 			List<Item> items = fsSearch.getResponse().getGroups().get(0).getItems();
-//					getResponse().getGroups().get(2).getItems();
 
 			if(items!=null && !items.isEmpty()) {
 				
@@ -112,13 +111,13 @@ public class SearchController extends HttpServlet {
 				log.log(Level.INFO, "No recommended venues at the given location");
 			}
 			
-			//	Forward view
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			//Forward view
+			request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);
 
 		} else {
 			log.log(Level.WARNING, "No coordinates for the given location");
 			
-			//	Redirigimos a la pagina de error ya que este atributo es necesario
+			//Redirigimos a la pagina de error ya que este atributo es necesario
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 
