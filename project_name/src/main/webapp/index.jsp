@@ -25,7 +25,7 @@
 		  	<a class="navbar-brand" href="/index.jsp">Home</a>
 		  	<ul class="navbar-nav">
 		    	<li class="nav-item">
-		      		<a class="nav-link" href="#">Ranking</a>
+		      		<a class="nav-link" href="/ranking.jsp">Ranking</a>
 		    	</li>
 		    	<li class="nav-item">
 		      		<a class="nav-link" href="/faq.jsp">FAQ</a>
