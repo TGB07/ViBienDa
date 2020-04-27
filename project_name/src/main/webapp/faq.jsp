@@ -32,6 +32,9 @@
 
 		<!-- Contenedores de preguntas -->
 		<div class="container">
+			<br>
+			<br>
+			<br>
 			<h2>FAQ</h2>
 			<p>Las preguntas más frecuentes de nuestros usuarios.</p>
 			<div id="accordion">
