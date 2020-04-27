@@ -2,9 +2,7 @@ package aiss.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,15 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.crimeometer.CrimeometerLLSearch;
-import aiss.model.crimeometer.Incident;
 import aiss.model.foursquare.FoursquareSearch;
 import aiss.model.foursquare.Item;
 import aiss.model.foursquare.Venue;
 import aiss.model.opencage.Geometry;
 import aiss.model.opencage.LLNameSearch;
 import aiss.model.opencage.Result;
-import aiss.model.resources.CrimeometerResource;
 import aiss.model.resources.FoursquareResource;
 import aiss.model.resources.OpenCageResource;
 
@@ -46,6 +41,19 @@ public class SearchController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
+//		String query = request.getParameter("reqVal");	//	Tomamos la query del input con name bar que forma la search bar
+//		System.out.println("============================================================================"+query);
+//		String[] s = query.split(";");
+//		Double lat = Double.parseDouble(s[0]);
+//		Double lon = Double.parseDouble(s[1]);
+//		request.setAttribute("lat", lat);
+//		request.setAttribute("lon", lon);
+//		
+//		//Forward view
+//		request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);
+
+		//////////////////////////////////////////////////////////////////////////////////////////
+			
 		String query = request.getParameter("bar");	//	Tomamos la query del input con name bar que forma la search bar
 		
 		//	Load coordinates
