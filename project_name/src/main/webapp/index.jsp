@@ -39,7 +39,7 @@
 			<h1>ViBienDa</h1>			
 			<div class="searchbar">
 				<form class="search" action="SearchController" method="post">
-					<input type="text" placeholder="Introduzca el nombre de una localización">
+					<input name="bar" type="text" placeholder="Introduzca el nombre de una localización">
 					<button type="submit"><i class="fa fa-arrow-right"></i></button>
 				</form>
 			</div>			
