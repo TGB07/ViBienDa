@@ -4,29 +4,21 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<title>ViBienDa</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<style>
-/* Make the image fully responsive */
-.carousel-inner img {
-	width: 100%;
-	height: 100%;
-}
-</style>
-
-</head>
+	<head>
+		<title>ViBienDa</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/ranking.css">
+		<link rel="stylesheet" href="./css/hamburgers.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>		
+	</head>
+	
 <body>
 	<div class=wrapper>
+	
 		<!-- NAV-BAR -->
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 			<a class="navbar-brand" href="/index.jsp">Home</a>
@@ -38,26 +30,22 @@
 			</ul>
 		</nav>
 		
-		<br>
-		<br>
-		<br>
-
-		<div>
-			<h2>Selección de zona</h2>
-
-			<form action="/action_page.php">
-				<label for="cars">Selecciona estado:</label> <select id="cars"
-					name="cars">
-					<option value="alaska">Alaska</option>
-					<option value="california">California</option>
-					<option value="colorado">Colorado</option>
-					<option value="washington">Washington</option>
-				</select> <input type="submit">
-			</form>
-		</div>
-
-		<div>
-		Mostrando resultados de California
+		<div class="sidebar-container">
+			<div id="mySidebar" class="sidebar">
+			    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+			    
+			    <h2>Selección de zona</h2>
+				<form action="/action_page.php">
+					<label for="cars">Selecciona estado:</label> <select id="cars"
+						name="cars">
+						<option value="alaska">Alaska</option>
+						<option value="california">California</option>
+						<option value="colorado">Colorado</option>
+						<option value="washington">Washington</option>
+					</select> <input type="submit">
+				</form>			
+		  	</div>
+		  <button id = "btn" class="openbtn" onclick="openNav()">☰</button>  
 		</div>
 
 		<div id="demo" class="carousel slide" data-ride="carousel">
@@ -99,6 +87,18 @@
 			</a>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+		function openNav() {
+			  document.getElementById("mySidebar").style.width = "250px";
+			  document.getElementById("btn").style.marginLeft = "250px";
+			}
+	
+			function closeNav() {
+			  document.getElementById("mySidebar").style.width = "0";
+			  document.getElementById("btn").style.marginLeft= "0";
+			}
+	</script>
 
 </body>
 </html>
