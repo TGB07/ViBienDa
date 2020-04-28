@@ -16,12 +16,12 @@ public class FoursquareResource {
 
 	private static final Logger log = Logger.getLogger(FoursquareResource.class.getName());
 	
-	public FoursquareSearch getRecommendedVenues(Double lat, Double lon) throws UnsupportedEncodingException {
+	public FoursquareSearch getRecommendedVenues(Double lat, Double lon, Double radio) throws UnsupportedEncodingException {
 		
 		ClientResource cr=null;
 		FoursquareSearch recommendedVenues=null; 
 		
-		String uri = "https://api.foursquare.com/v2/venues/explore?client_id=" + Foursquare_Client_Id + "&client_secret=" + Foursquare_Client_Secret + "&ll=" + lat + "," + lon + "&v=20200101&radius=100&pretty=1";
+		String uri = "https://api.foursquare.com/v2/venues/explore?client_id=" + Foursquare_Client_Id + "&client_secret=" + Foursquare_Client_Secret + "&ll=" + lat + "," + lon + "&v=20200101&radius=" + radio + "&pretty=1";
 		
 		log.log(Level.FINE, "Foursquare URI: " + uri);
 		

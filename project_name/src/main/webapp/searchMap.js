@@ -15,20 +15,22 @@ searchControl.on('results', function(data){
 	results.clearLayers();
 });
 
-map.on('click', function(e){
-	var coord = e.latlng;
-	var lat = coord.lat;
-	var lng = coord.lng;
-	var req = lat+";"+lng;
-	
-	$.ajax({
-		url:'/SearchController',
-		type: 'GET',
-		data: {
-			reqVal: req
-		},
-		success: function(data){
-			window.location.href = "/generalStatsView.jsp";
-		}
-	});
-});
+var popup = L.popup();
+
+function onMapClick(e){
+	// + "(" + e.latlng.lat.toString().substring(0, 5) + "," + e.latlng.lng.toString().substring(0, 5) + ")"
+	popup
+		.setLatLng(e.latlng)
+		.setContent('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">'+
+				"Acceder a los datos de esta localización" +
+				' en un radio de (kms)' +
+				'<form class="search" action="SearchController" method="post">' +
+				'<input id="radio" name="radio" type="number" min="0" max="100" step="1" value="10">' +
+				'<input name="lat" type="hidden" value="' + e.latlng.lat + '">' +
+				'<input name="lon" type="hidden" value="' + e.latlng.lng + '">' +
+				'<button type="submit"><i class="fa fa-arrow-right"></i></button>' +
+				'</form>')
+		.openOn(map);
+}
+
+map.on('click', onMapClick);
