@@ -4,12 +4,63 @@ body {
 .carousel-inner img {
 	width: 100%;
 	height: 100%;
+	min-height: 480px;
+	min-width: 690px;
 	z-index: 1;
 }
 .sidebar-container{
   position: relative;
   height: 100%;
   z-index: 2;  
+}
+.sidebar h2{
+	width: 100%;
+	text-align: center;
+	color: white;
+	white-space: nowrap;
+ 	overflow: hidden;
+ 	font-size: 25px;
+}
+.sidebar label{
+	width: 100%;
+	text-align: center;
+	color: white;
+	white-space: nowrap;
+ 	overflow: hidden;
+ 	font-size: 16px;
+}
+.sidebar input[list="state"]{
+	width: 80%;
+	margin-left:20px;
+	margin-right:20px;
+	height: 30px;
+	background-color: transparent;
+	color: white;
+	border: none;
+	border-bottom: 3px solid RoyalBlue;
+	padding-left:10px;
+}
+.sidebar input[list="state"]:focus{
+	outline:0;
+	background-color: black;
+}
+.sidebar input[list="state"]::-webkit-calendar-picker-indicator {
+  color: RoyalBlue;
+  opacity: 100;
+  background: transparent;
+  cursor: pointer;
+}
+.sidebar input[type="submit"]{
+	color: white;
+	border:none;
+	background-color: RoyalBlue;
+	margin-left: 65px;
+	margin-top: 30px;
+	width: 40%;
+	height: 30px;
+}
+.sidebar input[type="submit"]:hover{
+	background-color: #007bff;
 }
 .sidebar {
   margin-top: 55px;
@@ -23,6 +74,7 @@ body {
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+  opacity: 0.85;  
 }
 
 .sidebar a {
@@ -38,15 +90,7 @@ body {
   color: #f1f1f1;
 }
 
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-.openbtn {
+.btn {
   font-size: 20px;
   cursor: pointer;
   background-color: #111;
@@ -55,10 +99,38 @@ body {
   border: none;
   transition: margin-left .5s;
   position: fixed;
-  margin-top: 20%;
+  margin-top: 65px;
+  opacity: 0.85;
+  border-radius: 0 50px 50px 0;
+  
+  display: inline-block;
 }
-.openbtn:hover {
+.btn:focus{
+	outline:0;
+}
+.btn:hover {
   background-color: #444;
+}
+.bar1, .bar2, .bar3 {
+  width: 20px;
+  height: 2px;
+  background-color: LightGrey;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 3px);
+  width: 25px;
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  width: 25px;
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -3px);
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */

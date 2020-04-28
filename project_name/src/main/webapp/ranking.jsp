@@ -30,24 +30,33 @@
 			</ul>
 		</nav>
 		
+		<!-- SIDEBAR DE OPCIONES -->
 		<div class="sidebar-container">
 			<div id="mySidebar" class="sidebar">
-			    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 			    
 			    <h2>Selección de zona</h2>
 				<form action="/action_page.php">
-					<label for="cars">Selecciona estado:</label> <select id="cars"
-						name="cars">
-						<option value="alaska">Alaska</option>
-						<option value="california">California</option>
-						<option value="colorado">Colorado</option>
-						<option value="washington">Washington</option>
-					</select> <input type="submit">
+					<label for="state">Selecciona estado:</label>
+					<input list="state" placeholder="Selecciona un estado"> 
+					<datalist id="state">
+						<option value="AL">Alabama</option>
+						<option value="AK">Alaska</option>
+						<option value="AZ">Arizona</option>
+						<option value="AR">Arkansas</option>
+						<option value="CA">California</option>
+						<option value="CO">Colorado</option>
+						<option value="WA">Washington</option>
+					</datalist> <input type="submit" value="Buscar">
 				</form>			
 		  	</div>
-		  <button id = "btn" class="openbtn" onclick="openNav()">☰</button>  
+			<div id = "btn" class="btn" onclick="toggleNav(this)">
+			  	<div class="bar1"></div>
+				<div class="bar2"></div>
+				<div class="bar3"></div>
+		  	</div>  
 		</div>
-
+		
+		<!-- SLIDER DE IMAGENES -->
 		<div id="demo" class="carousel slide" data-ride="carousel">
 			<ul class="carousel-indicators">
 				<li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -88,16 +97,21 @@
 		</div>
 	</div>
 	
+	<!-- scripts -->
 	<script type="text/javascript">
-		function openNav() {
-			  document.getElementById("mySidebar").style.width = "250px";
-			  document.getElementById("btn").style.marginLeft = "250px";
+		function toggleNav(x){
+			var width = getComputedStyle(document.getElementById("mySidebar")).width;
+			if(width.localeCompare("0px")==1){
+				x.classList.remove("change");
+				document.getElementById("mySidebar").style.width = "0";
+				document.getElementById("btn").style.marginLeft= "0";
 			}
-	
-			function closeNav() {
-			  document.getElementById("mySidebar").style.width = "0";
-			  document.getElementById("btn").style.marginLeft= "0";
+			else{
+				x.classList.add("change");
+				document.getElementById("mySidebar").style.width = "250px";
+				document.getElementById("btn").style.marginLeft = "250px";
 			}
+		}
 	</script>
 
 </body>
