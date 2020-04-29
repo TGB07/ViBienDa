@@ -34,7 +34,7 @@
 	}
 	#map .geocoder-control-input{
 		margin-top: 130px;
-		width: 25px;
+		min-width: 25px;
 	}
 	.leaflet-control-zoom{
 		position: absolute;
@@ -43,11 +43,13 @@
 	.titulito{
 		position: absolute;
 		top: 80px;
-		width: 100%;
+		height: 40px;
+		width: 95%;
+		right: 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		z-index:2;	
+		z-index:1;	
 	}
 	.titulito h2{
 		color: white;
@@ -57,7 +59,7 @@
 		background:black;
 		opacity: 0.5;
 		border-radius: 50px;
-		height: 60px;
+		height: 100%;
 		padding-left:20px;
 		padding-right:20px;
 		display: flex;
@@ -67,7 +69,7 @@
 	@media screen and (max-width: 575px){
 		#map .geocoder-control-input{
 			margin-top: 185px;
-			width: 25px;
+			min-width: 25px;
 		}
 		.leaflet-control-zoom{
 			position: absolute;
