@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jboss.resteasy.core.NoMessageBodyWriterFoundFailure;
+
 import aiss.model.crimeometer.CrimeStatsLLSearch;
 import aiss.model.crimeometer.ReportType;
 import aiss.model.foursquare.FoursquareSearch;
@@ -49,6 +51,7 @@ public class SearchController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String barQuery = request.getParameter("bar");
+		OpenCageResource ocResource = new OpenCageResource();
 
 		Double lat = null, lon = null;
 		Double radio = 100.;
@@ -58,15 +61,21 @@ public class SearchController extends HttpServlet {
 			lat = Double.parseDouble(request.getParameter("lat"));
 			lon = Double.parseDouble(request.getParameter("lon"));
 			radio = Double.parseDouble(request.getParameter("radio"));
+			
+			
+			LLNameSearch LLtoName= ocResource.getNombreLL(lat, lon);
+			
+			String nombreLL= LLtoName.getResults().get(0).getComponents().getCounty().replace("County", "");
 
 			request.setAttribute("lat", lat);
 			request.setAttribute("lon", lon);
+			request.setAttribute("nombreLL", nombreLL);
 
 		} else {
 			// Se ha realizado el request a traves de la barra de busqueda
 
 			// Cargamos las coordenadas asociadas a la query
-			OpenCageResource ocResource = new OpenCageResource();
+			ocResource = new OpenCageResource();
 			LLNameSearch ocrResponse = ocResource.getLatitudLongitud(barQuery);
 			List<Result> results = ocrResponse.getResults();
 
@@ -125,8 +134,6 @@ public class SearchController extends HttpServlet {
 				venues.add(items.get(i).getVenue());
 			}
 
-			// List<Venue> venues = items.stream().map(i ->
-			// i.getVenue()).collect(Collectors.toList());
 			request.setAttribute("venues", venues);
 		} else {
 			log.log(Level.INFO, "No recommended venues at the given location");
@@ -134,84 +141,6 @@ public class SearchController extends HttpServlet {
 
 		// Forward view
 		request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);
-
-		/////////////////////////////////////////////////
-
-//		String query = request.getParameter("bar");	//	Tomamos la query del input con name bar que forma la search bar
-//		
-//		//	Load coordinates
-//		OpenCageResource ocResource = new OpenCageResource();
-//		LLNameSearch ocrResponse = ocResource.getLatitudLongitud(query);
-//		List<Result> results = ocrResponse.getResults();
-//		Double lat, lon;
-//		
-//		if(results!=null && !results.isEmpty()) {
-//			Geometry g = results.get(0).getGeometry();
-//			lat = g.getLat();
-//			lon = g.getLng();
-//			request.setAttribute("lat", lat);
-//			request.setAttribute("lon", lon);
-//			
-////			//	Load crime data
-////			CrimeometerResource coResource = new CrimeometerResource();
-////			CrimeometerLLSearch coResponse = coResource.getCrimeData(lat, lon);
-////			Integer totalDelitos = coResponse.getTotalIncidents();
-////			Map<String, Long> incidenteTotal = new HashMap<String, Long>();
-////			
-////			if(totalDelitos==0) {
-////				log.log(Level.INFO, "No crime data at the given location");
-////			} else {
-////
-////			List<Incident> incidentes = coResponse.getIncidents();
-////
-////				 for(Incident i : incidentes){
-////			            String tipo = i.getIncidentOffense();
-////			            if(!incidenteTotal.containsKey(tipo)){
-////			                incidenteTotal.put(tipo, 1L);
-////			            } else {
-////			                incidenteTotal.put(tipo, incidenteTotal.get(tipo)+1);
-////			            }
-////			        }
-////						
-////		//coResponse.getIncidents().parallelStream().collect(Collectors.groupingBy(i -> i.getIncidentOffense(), Collectors.counting()));
-////				 
-////				//	Calculamos los porcentajes asociados a los distintos tipos de delitos
-////				for(Map.Entry<String, Long> entry: incidenteTotal.entrySet()) {
-////					incidenteTotal.put(entry.getKey(), entry.getValue()/totalDelitos*100);
-////				}
-////			}
-////			request.setAttribute("incidentes", incidenteTotal);
-//			
-//			//	Load recommended venues
-//			
-//			FoursquareResource fsResource = new FoursquareResource();
-//			FoursquareSearch fsSearch = fsResource.getRecommendedVenues(lat, lon);
-//			List<Item> items = fsSearch.getResponse().getGroups().get(0).getItems();
-//
-//			if(items!=null && !items.isEmpty()) {
-//				
-//				List<Venue> venues=new ArrayList<Venue>();
-//				
-//				for (int i = 0; i < items.size(); i++) {
-//					venues.add(items.get(i).getVenue());
-//				}
-//				
-////				List<Venue> venues = items.stream().map(i -> i.getVenue()).collect(Collectors.toList());
-//				request.setAttribute("venues", venues);
-//			} else {
-//				log.log(Level.INFO, "No recommended venues at the given location");
-//			}
-//			
-//			//Forward view
-//			request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);
-//
-//		} else {
-//			log.log(Level.WARNING, "No coordinates for the given location");
-//			
-//			//Redirigimos a la pagina de error ya que este atributo es necesario
-//			request.getRequestDispatcher("/error.jsp").forward(request, response);
-//		}
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

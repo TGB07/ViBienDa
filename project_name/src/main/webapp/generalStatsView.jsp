@@ -13,7 +13,11 @@
 
 	<!-- NOMBRE POR EL QUE SE REALIZA LA BUSQUEDA -->
 	<c:out value="${param.bar}" />
-
+	
+	<!--  EN CASO DE BUSCAR POR MAPA EL NOMBRE SE PRINTA ASI -->
+	<span><c:out value="${nombreLL}" /></span>
+	
+	<br>
 
 	<div class=parametros>
 
