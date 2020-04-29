@@ -38,8 +38,8 @@
 		<span> Longitud del nombre: <c:out value="${lon}"></c:out> </span>
 		<br> <br>
 		
-		<c:forEach items="${requestScope.venues}" var="venue">
-			<span> LugarRecomendado: <c:out value="${venue.name}" /></span>
+		<c:forEach items="${requestScope.lVenues}" var="venue">
+			<span> LugarRecomendado: <c:out value="${venue}" /></span>
 			<br>
 		</c:forEach>
 

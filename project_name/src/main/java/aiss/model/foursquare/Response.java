@@ -7,110 +7,29 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "suggestedFilters",
-    "headerLocation",
-    "headerFullLocation",
-    "headerLocationGranularity",
-    "totalResults",
-    "suggestedBounds",
-    "groups"
+    "venues"
 })
-@JsonIgnoreProperties(ignoreUnknown=true)
-
 public class Response {
 
-    @JsonProperty("suggestedFilters")
-    private SuggestedFilters suggestedFilters;
-    @JsonProperty("headerLocation")
-    private String headerLocation;
-    @JsonProperty("headerFullLocation")
-    private String headerFullLocation;
-    @JsonProperty("headerLocationGranularity")
-    private String headerLocationGranularity;
-    @JsonProperty("totalResults")
-    private Integer totalResults;
-    @JsonProperty("suggestedBounds")
-    private SuggestedBounds suggestedBounds;
-    @JsonProperty("groups")
-    private List<Group> groups = null;
+    @JsonProperty("venues")
+    private List<Venue> venues = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("suggestedFilters")
-    public SuggestedFilters getSuggestedFilters() {
-        return suggestedFilters;
+    @JsonProperty("venues")
+    public List<Venue> getVenues() {
+        return venues;
     }
 
-    @JsonProperty("suggestedFilters")
-    public void setSuggestedFilters(SuggestedFilters suggestedFilters) {
-        this.suggestedFilters = suggestedFilters;
-    }
-
-    @JsonProperty("headerLocation")
-    public String getHeaderLocation() {
-        return headerLocation;
-    }
-
-    @JsonProperty("headerLocation")
-    public void setHeaderLocation(String headerLocation) {
-        this.headerLocation = headerLocation;
-    }
-
-    @JsonProperty("headerFullLocation")
-    public String getHeaderFullLocation() {
-        return headerFullLocation;
-    }
-
-    @JsonProperty("headerFullLocation")
-    public void setHeaderFullLocation(String headerFullLocation) {
-        this.headerFullLocation = headerFullLocation;
-    }
-
-    @JsonProperty("headerLocationGranularity")
-    public String getHeaderLocationGranularity() {
-        return headerLocationGranularity;
-    }
-
-    @JsonProperty("headerLocationGranularity")
-    public void setHeaderLocationGranularity(String headerLocationGranularity) {
-        this.headerLocationGranularity = headerLocationGranularity;
-    }
-
-    @JsonProperty("totalResults")
-    public Integer getTotalResults() {
-        return totalResults;
-    }
-
-    @JsonProperty("totalResults")
-    public void setTotalResults(Integer totalResults) {
-        this.totalResults = totalResults;
-    }
-
-    @JsonProperty("suggestedBounds")
-    public SuggestedBounds getSuggestedBounds() {
-        return suggestedBounds;
-    }
-
-    @JsonProperty("suggestedBounds")
-    public void setSuggestedBounds(SuggestedBounds suggestedBounds) {
-        this.suggestedBounds = suggestedBounds;
-    }
-
-    @JsonProperty("groups")
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    @JsonProperty("groups")
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
+    @JsonProperty("venues")
+    public void setVenues(List<Venue> venues) {
+        this.venues = venues;
     }
 
     @JsonAnyGetter

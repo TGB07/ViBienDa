@@ -7,7 +7,6 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -18,11 +17,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "name",
     "location",
     "categories",
-    "photos"
+    "venuePage"
 })
-
-@JsonIgnoreProperties(ignoreUnknown=true)
-
 public class Venue {
 
     @JsonProperty("id")
@@ -33,8 +29,8 @@ public class Venue {
     private Location location;
     @JsonProperty("categories")
     private List<Category> categories = null;
-    @JsonProperty("photos")
-    private Photos photos;
+    @JsonProperty("venuePage")
+    private VenuePage venuePage;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -78,14 +74,14 @@ public class Venue {
         this.categories = categories;
     }
 
-    @JsonProperty("photos")
-    public Photos getPhotos() {
-        return photos;
+    @JsonProperty("venuePage")
+    public VenuePage getVenuePage() {
+        return venuePage;
     }
 
-    @JsonProperty("photos")
-    public void setPhotos(Photos photos) {
-        this.photos = photos;
+    @JsonProperty("venuePage")
+    public void setVenuePage(VenuePage venuePage) {
+        this.venuePage = venuePage;
     }
 
     @JsonAnyGetter

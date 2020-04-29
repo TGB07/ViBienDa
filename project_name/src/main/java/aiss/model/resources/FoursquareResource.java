@@ -21,7 +21,7 @@ public class FoursquareResource {
 		ClientResource cr=null;
 		FoursquareSearch recommendedVenues=null; 
 		
-		String uri = "https://api.foursquare.com/v2/venues/explore?client_id=" + Foursquare_Client_Id + "&client_secret=" + Foursquare_Client_Secret + "&ll=" + lat + "," + lon + "&v=20200101&radius=" + radio + "&pretty=1";
+		String uri = "https://api.foursquare.com/v2/venues/search?client_id=" + Foursquare_Client_Id + "&client_secret=" + Foursquare_Client_Secret + "&ll=" + lat + "," + lon + "&v=20200101&intent=browse&radius=" + radio;
 		
 		log.log(Level.FINE, "Foursquare URI: " + uri);
 		

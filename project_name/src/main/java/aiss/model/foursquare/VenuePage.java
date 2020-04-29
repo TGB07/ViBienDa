@@ -2,50 +2,33 @@
 package aiss.model.foursquare;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "count",
-    "items"
+    "id"
 })
-@JsonIgnoreProperties(ignoreUnknown=true)
+public class VenuePage {
 
-public class Reasons {
-
-    @JsonProperty("count")
-    private Integer count;
-    @JsonProperty("items")
-    private List<Item_> items = null;
+    @JsonProperty("id")
+    private String id;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("count")
-    public Integer getCount() {
-        return count;
+    @JsonProperty("id")
+    public String getId() {
+        return id;
     }
 
-    @JsonProperty("count")
-    public void setCount(Integer count) {
-        this.count = count;
-    }
-
-    @JsonProperty("items")
-    public List<Item_> getItems() {
-        return items;
-    }
-
-    @JsonProperty("items")
-    public void setItems(List<Item_> items) {
-        this.items = items;
+    @JsonProperty("id")
+    public void setId(String id) {
+        this.id = id;
     }
 
     @JsonAnyGetter

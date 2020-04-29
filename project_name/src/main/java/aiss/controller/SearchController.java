@@ -18,7 +18,7 @@ import org.jboss.resteasy.core.NoMessageBodyWriterFoundFailure;
 import aiss.model.crimeometer.CrimeStatsLLSearch;
 import aiss.model.crimeometer.ReportType;
 import aiss.model.foursquare.FoursquareSearch;
-import aiss.model.foursquare.Item;
+import aiss.model.foursquare.Response;
 import aiss.model.foursquare.Venue;
 import aiss.model.opencage.Geometry;
 import aiss.model.opencage.LLNameSearch;
@@ -61,11 +61,10 @@ public class SearchController extends HttpServlet {
 			lat = Double.parseDouble(request.getParameter("lat"));
 			lon = Double.parseDouble(request.getParameter("lon"));
 			radio = Double.parseDouble(request.getParameter("radio"));
-			
-			
-			LLNameSearch LLtoName= ocResource.getNombreLL(lat, lon);
-			
-			String nombreLL= LLtoName.getResults().get(0).getComponents().getCounty().replace("County", "");
+
+			LLNameSearch LLtoName = ocResource.getNombreLL(lat, lon);
+
+			String nombreLL = LLtoName.getResults().get(0).getComponents().getCounty().replace("County", "");
 
 			request.setAttribute("lat", lat);
 			request.setAttribute("lon", lon);
@@ -124,17 +123,24 @@ public class SearchController extends HttpServlet {
 
 		FoursquareResource fsResource = new FoursquareResource();
 		FoursquareSearch fsSearch = fsResource.getRecommendedVenues(lat, lon, radio);
-		List<Item> items = fsSearch.getResponse().getGroups().get(0).getItems();
+
+		Venue item = null;
+		List<String> lVenues = new ArrayList<String>();
+		List<Venue> items = fsSearch.getResponse().getVenues();
 
 		if (items != null && !items.isEmpty()) {
 
-			List<Venue> venues = new ArrayList<Venue>();
-
 			for (int i = 0; i < items.size(); i++) {
-				venues.add(items.get(i).getVenue());
+				item = items.get(i);
+				if(!item.getCategories().isEmpty()) {
+					lVenues.add(item.getName() + " --> Categoria: " + item.getCategories().get(0).getName());
+				}
+				else {
+					lVenues.add(item.getName() + " --> No Category for that place");
+				}
 			}
+			request.setAttribute("lVenues", lVenues);
 
-			request.setAttribute("venues", venues);
 		} else {
 			log.log(Level.INFO, "No recommended venues at the given location");
 		}
