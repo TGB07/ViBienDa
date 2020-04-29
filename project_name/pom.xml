@@ -141,6 +141,14 @@
 		    <artifactId>apache-jsp</artifactId>
 		    <version>9.4.15.v20190215</version>
 		</dependency>
+		
+		<dependency>
+	
+			<groupId>com.squareup.okhttp</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>2.5.0</version>
+	
+		</dependency>
 
 	</dependencies>
 

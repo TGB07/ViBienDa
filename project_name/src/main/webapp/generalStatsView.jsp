@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +17,15 @@
 
 	<div class=parametros>
 
-<!-- 
 		<c:forEach items="${requestScope.incidentes}" var="incidente">
-			<span> <c:out value="${incidente.key}" /></span>
+		
+			<span> <c:out value="${incidente.key}" />: </span>
 			<span> <c:out value="${incidente.value}" />%</span>
+			
 			<br>
-		</c:forEach>
--->
+		</c:forEach> 
+
+		
 	</div>
 	
 		<a href="/index.jsp"> Ver ofertas en la zona </a> <br> <br>

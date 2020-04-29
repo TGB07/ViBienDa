@@ -14,7 +14,7 @@ public class OpenCageResource {
 
 	private static final String OpenCage_API_KEY = "07cecfd3cd97455b87fae72871cefe05";
 	private static final Logger log = Logger.getLogger(OpenCageResource.class.getName());
-
+ 
 	public LLNameSearch getLatitudLongitud(String query) throws UnsupportedEncodingException {
 
 		ClientResource cr = null;
@@ -22,6 +22,26 @@ public class OpenCageResource {
 		
 		String queryFormatted = URLEncoder.encode(query, "UTF-8");
 		String uri = "https://api.opencagedata.com/geocode/v1/json?q=" + queryFormatted +"&key=" + OpenCage_API_KEY + "&language=es&pretty=1&no_annotations=1&limit=1&min_confidence=3";
+		
+		log.log(Level.FINE, "OpenCage URI: " + uri);
+		
+		try {
+			cr = new ClientResource(uri);
+			llnameSearch = cr.get(LLNameSearch.class);
+		}
+		catch (ResourceException re){
+			System.err.println("Error when retrieving the latitude/longitude" + cr.getResponse().getStatus());
+		}
+		
+		return llnameSearch;
+	}
+	
+	public LLNameSearch getNombreLL(Double lat, Double lon) throws UnsupportedEncodingException {
+
+		ClientResource cr = null;
+		LLNameSearch llnameSearch=null;
+		
+		String uri = "https://api.opencagedata.com/geocode/v1/json?q=" + lat + "+" + lon +"&key=" + OpenCage_API_KEY + "&language=es&pretty=1&no_annotations=1&limit=1&min_confidence=3";
 		
 		log.log(Level.FINE, "OpenCage URI: " + uri);
 		

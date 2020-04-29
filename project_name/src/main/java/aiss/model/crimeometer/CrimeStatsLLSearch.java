@@ -14,22 +14,22 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "total_incidents",
-    "total_pages",
-    "incidents"
+    "report_types",
+    "total_csi"
 })
-public class CrimeometerLLSearch {
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+public class CrimeStatsLLSearch {
 
     @JsonProperty("total_incidents")
     private Integer totalIncidents;
-    @JsonProperty("total_pages")
-    private Integer totalPages;
-    @JsonProperty("incidents")
-    private List<Incident> incidents = null;
+    @JsonProperty("report_types")
+    private List<ReportType> reportTypes = null;
+    @JsonProperty("total_csi")
+    private String totalCsi;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -43,24 +43,24 @@ public class CrimeometerLLSearch {
         this.totalIncidents = totalIncidents;
     }
 
-    @JsonProperty("total_pages")
-    public Integer getTotalPages() {
-        return totalPages;
+    @JsonProperty("report_types")
+    public List<ReportType> getReportTypes() {
+        return reportTypes;
     }
 
-    @JsonProperty("total_pages")
-    public void setTotalPages(Integer totalPages) {
-        this.totalPages = totalPages;
+    @JsonProperty("report_types")
+    public void setReportTypes(List<ReportType> reportTypes) {
+        this.reportTypes = reportTypes;
     }
 
-    @JsonProperty("incidents")
-    public List<Incident> getIncidents() {
-        return incidents;
+    @JsonProperty("total_csi")
+    public String getTotalCsi() {
+        return totalCsi;
     }
 
-    @JsonProperty("incidents")
-    public void setIncidents(List<Incident> incidents) {
-        this.incidents = incidents;
+    @JsonProperty("total_csi")
+    public void setTotalCsi(String totalCsi) {
+        this.totalCsi = totalCsi;
     }
 
     @JsonAnyGetter
