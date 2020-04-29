@@ -28,7 +28,7 @@
 			    <h2>Selección de zona</h2>
 				<form action="/action_page.php">
 					<label for="state">Selecciona estado:</label>
-					<input list="state" placeholder="Selecciona un estado"> 
+					<input list="state" placeholder="Selecciona un estado" required="required"> 
 					<datalist id="state">
 						<option value="AL">Alabama</option>
 						<option value="AK">Alaska</option>
