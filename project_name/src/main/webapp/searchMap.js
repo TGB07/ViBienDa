@@ -22,8 +22,7 @@ function onMapClick(e){
 	popup
 		.setLatLng(e.latlng)
 		.setContent('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">'+
-				"Acceder a los datos de esta localización" +
-				' en un radio de (kms)' +
+				"Seleccione el radio en kilómetros:" +
 				'<form class="search" action="SearchController" method="post">' +
 				'<input id="radio" name="radio" type="number" min="0" max="100" step="1" value="10">' +
 				'<input name="lat" type="hidden" value="' + e.latlng.lat + '">' +

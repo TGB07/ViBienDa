@@ -12,6 +12,15 @@
 		<url-pattern>/SearchController</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>NewsController</servlet-name>
+		<servlet-class>aiss.controller.NewsController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewsController</servlet-name>
+		<url-pattern>/NewsController</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

@@ -40,7 +40,7 @@
 		position: absolute;
 		top: 55px;
 	}
-	.titulito{
+	.info{
 		position: absolute;
 		top: 80px;
 		height: 40px;
@@ -49,15 +49,15 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		z-index:1;	
+		z-index:1;
+		opacity:0.7;
 	}
-	.titulito h2{
+	.info h2{
 		color: white;
 		font-size: 25px;
 		text-align: center;
 		width: 50%;
 		background:black;
-		opacity: 0.5;
 		border-radius: 50px;
 		height: 100%;
 		padding-left:20px;
@@ -66,6 +66,7 @@
 		align-items: center;
 		justify-content: center;
 	}
+	
 	@media screen and (max-width: 575px){
 		#map .geocoder-control-input{
 			margin-top: 185px;
@@ -85,7 +86,7 @@
 	<!-- NAV-BAR -->
 	<jsp:include page="navbar.html"/>
 	
-	<div class = titulito>
+	<div class = info>
 		<h2>Haga click en la localización que desee</h2>
 	</div>
 

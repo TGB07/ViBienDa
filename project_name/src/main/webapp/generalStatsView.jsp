@@ -31,12 +31,24 @@
 
 		
 	</div>
-	
-		<a href="/index.jsp"> Ver ofertas en la zona </a> <br> <br>
+		
 		<span> Latitud del nombre: <c:out value="${lat}"></c:out> </span>
 		<br>
 		<span> Longitud del nombre: <c:out value="${lon}"></c:out> </span>
 		<br> <br>
+		
+		<form class="noticiasForm" action="NewsController" method="post">
+			<input name="loc" type="hidden" value="${ param.bar=='' ? nombreLL : param.bar}" >
+			<!-- Podriamos hacer que la tematica fuese con un type=select, pero tendriamos que ver en que categorias dividiriamos las noticias -->
+			<input name="tematica" type="text" placeholder="Temática de las noticias">
+			<select name="orden">
+				<option value="relevance">Relevancia</option>
+				<option value="publishedAt">Fecha de publicación</option>
+				<option value="popularity">Popularidad de las fuentes</option>
+			</select>
+			<input type="submit" value="Ver noticias relacionadas con este lugar">
+		</form>
+		<br><br>
 		
 		<c:forEach items="${requestScope.lVenues}" var="venue">
 			<span> LugarRecomendado: <c:out value="${venue}" /></span>
