@@ -1,0 +1,9 @@
+{
+	"Foursquare": {
+		"tokenUrl": "",
+		"clientId": "",
+		"clientSecret": "",
+		"authorizationFormUrl": "",
+		"scopes": []
+	}
+}		

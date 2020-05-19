@@ -83,7 +83,7 @@ public class NewsController extends HttpServlet {
 		 * 
 		 * 	Le pasaremos al jsp la lista de articulos que procesaremos en este (parece que en el de 4square/crimeometer habeis usado string pero se pueden objetos)
 		 */
-		
+				
 		request.setAttribute("articulos", articulos);
 			
 		// Forward view

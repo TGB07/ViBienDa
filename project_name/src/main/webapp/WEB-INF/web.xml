@@ -21,6 +21,16 @@
 		<url-pattern>/NewsController</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>GetAllUserListsController</servlet-name>
+		<servlet-class>aiss.controller.GetAllUserListsController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllUserListsController</servlet-name>
+		<url-pattern>/GetAllUserListsController</url-pattern>
+	</servlet-mapping>
+	
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
