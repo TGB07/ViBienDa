@@ -18,7 +18,9 @@ import aiss.model.crimeometer.CrimeStatsLLSearch;
 
 public class CrimeometerResource {
 	
-	private static final String Crimeometer_API_KEY = "k3RAzKN1Ag14xTPlculT39RZb38LGgsG8n27ZycG";
+	//	TEST API KEY
+	//private static final String Crimeometer_API_KEY = "k3RAzKN1Ag14xTPlculT39RZb38LGgsG8n27ZycG";
+	private static final String Crimeometer_API_KEY = "gE9XyNl7P4351razeB2Al3sE2yMOItV76iuOFIMT";
 	private static final Logger log = Logger.getLogger(CrimeometerResource.class.getName());
 	public static final MediaType JSON= MediaType.parse("application/json; charset=UTF-8");
 		 	

@@ -92,54 +92,57 @@ public class SearchController extends HttpServlet {
 			}
 		}
 
-//		Load crime data
-		CrimeometerResource coResource = new CrimeometerResource();
-
-		CrimeStatsLLSearch coResponse = coResource.getCrimeStatsLL(lat, lon);
-
-		Integer totalDelitos = coResponse.getTotalIncidents();
-
-		Map<String, Double> incidenteTotal = new HashMap<String, Double>();
-
-		if (totalDelitos == 0) {
-			log.log(Level.INFO, "No crime data at the given location");
-		} else {
-
-			List<ReportType> reportes = coResponse.getReportTypes();
-
-			for (ReportType r : reportes) {
-				incidenteTotal.put(r.getType(), r.getCount().doubleValue());
-			}
-
-			// Calculamos los porcentajes asociados a los distintos tipos de delitos
-
-			for (Map.Entry<String, Double> entry : incidenteTotal.entrySet()) {
-				incidenteTotal.put(entry.getKey(), (entry.getValue().doubleValue() / totalDelitos) * 100);
-			}
-			request.setAttribute("incidentes", incidenteTotal);
-		}
+////		Load crime data
+//		CrimeometerResource coResource = new CrimeometerResource();
+//
+//		CrimeStatsLLSearch coResponse = coResource.getCrimeStatsLL(lat, lon);
+//
+//		Integer totalDelitos = coResponse.getTotalIncidents();
+//
+//		Map<String, Double> incidenteTotal = new HashMap<String, Double>();
+//
+//		if (totalDelitos == 0) {
+//			log.log(Level.INFO, "No crime data at the given location");
+//		} else {
+//
+//			List<ReportType> reportes = coResponse.getReportTypes();
+//
+//			for (ReportType r : reportes) {
+//				incidenteTotal.put(r.getType(), r.getCount().doubleValue());
+//			}
+//
+//			// Calculamos los porcentajes asociados a los distintos tipos de delitos
+//
+//			for (Map.Entry<String, Double> entry : incidenteTotal.entrySet()) {
+//				incidenteTotal.put(entry.getKey(), (entry.getValue().doubleValue() / totalDelitos) * 100);
+//			}
+//			request.setAttribute("incidentes", incidenteTotal);
+//		}
 
 		// Load recommended venues
 
 		FoursquareResource fsResource = new FoursquareResource();
 		FoursquareSearch fsSearch = fsResource.getRecommendedVenues(lat, lon, radio);
 
-		Venue item = null;
-		List<String> lVenues = new ArrayList<String>();
+//		Venue item = null;
+//		List<String> lVenues = new ArrayList<String>();
 		List<Venue> items = fsSearch.getResponse().getVenues();
+		System.out.println(items);
 
 		if (items != null && !items.isEmpty()) {
 
-			for (int i = 0; i < items.size(); i++) {
-				item = items.get(i);
-				if(!item.getCategories().isEmpty()) {
-					lVenues.add(item.getName() + " --> Categoria: " + item.getCategories().get(0).getName());
-				}
-				else {
-					lVenues.add(item.getName() + " --> No Category for that place");
-				}
-			}
-			request.setAttribute("lVenues", lVenues);
+			request.setAttribute("lVenues", items);
+			
+//			for (int i = 0; i < items.size(); i++) {
+//				item = items.get(i);
+//				if(!item.getCategories().isEmpty()) {
+//					lVenues.add(item.getName() + " --> Categoria: " + item.getCategories().get(0).getName());
+//				}
+//				else {
+//					lVenues.add(item.getName() + " --> No Category for that place");
+//				}
+//			}
+//			request.setAttribute("lVenues", lVenues);
 
 		} else {
 			log.log(Level.INFO, "No recommended venues at the given location");
