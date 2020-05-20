@@ -53,9 +53,9 @@ public class GetAllUserListsController extends HttpServlet {
 					
 			FoursquareList fl = fsResource.getUserLists(accessToken);
 			
-			List<Response> detallesListaUsuario = new ArrayList<Response>();
-			Map<String, String> infoListasDelUsuario = new HashMap<String, String>();//clave: id lista; valor: nombre lista 
 			List<Item_> listaDelUsuario = fl.getResponse().getLists().getItems();
+			Map<String, String> infoListasDelUsuario = new HashMap<String, String>();//clave: id lista; valor: nombre lista 
+			List<Response> detallesListaUsuario = new ArrayList<Response>();
 			
 			for (int i = 0; i < listaDelUsuario.size(); i++) {
 				String id= listaDelUsuario.get(i).getId();
@@ -68,7 +68,6 @@ public class GetAllUserListsController extends HttpServlet {
 			request.setAttribute("listaDelUsuario", listaDelUsuario);
 			request.setAttribute("detallesListaUsuario", detallesListaUsuario);
 			
-			
 			// Forward view
 			request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);;
 		}
@@ -77,8 +76,6 @@ public class GetAllUserListsController extends HttpServlet {
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
 			request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);
 		}
-		
-
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
