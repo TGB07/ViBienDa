@@ -76,6 +76,7 @@ public class GetAllUserListsController extends HttpServlet {
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
 			request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);
 		}
+		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
