@@ -91,7 +91,7 @@
 	</div>
 
 	<div id="map"></div>
-	<script type="text/javascript" src="/searchMap.js"></script>
+	<script type="text/javascript" src="./js/searchMap.js"></script>
 
 </body>
 </html>

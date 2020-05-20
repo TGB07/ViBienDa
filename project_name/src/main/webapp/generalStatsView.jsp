@@ -22,62 +22,14 @@
 <link rel="stylesheet" type="text/css" href="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<style>
-	#map{
-		bottom:0;
-		right:0;
-    	height:50%;
-    	width:50%;
-    	z-index:900;
-	}
-
-</style>
+<!-- CSS -->
+<link rel="stylesheet" href="./css/generalStatsView.css">
 
 <title>GeneralStatsView</title>
 </head>
 <body>
 
-	<!--  EN CASO DE BUSCAR POR MAPA EL NOMBRE SE PRINTA ASI -->
-	<span><c:out value="${nombreLL}" /></span>
-
-	<br>
-	<script>
-			var map = L.map('map').setView([37.0902, -95.7129], 5);
-
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-			}).addTo(map);
-
-
-			L.control.scale().addTo(map);
-
-			var searchControl = new L.esri.Controls.Geosearch().addTo(map);
-
-			var results = new L.LayerGroup().addTo(map);
-
-			searchControl.on('results', function(data){
-				results.clearLayers();
-			});
-
-			var popup = L.popup();
-
-			function onMapClick(e){
-				// + "(" + e.latlng.lat.toString().substring(0, 5) + "," + e.latlng.lng.toString().substring(0, 5) + ")"
-				popup
-					.setLatLng(e.latlng)
-					.setContent('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">'+
-							"Seleccione el radio en kilómetros:" +
-							'<form class="search" action="SearchController" method="post">' +
-							'<input id="radio" name="radio" type="number" min="0" max="100" step="1" value="10">' +
-							'<input name="lat" type="hidden" value="' + e.latlng.lat + '">' +
-							'<input name="lon" type="hidden" value="' + e.latlng.lng + '">' +
-							'<button type="submit"><i class="fa fa-arrow-right"></i></button>' +
-							'</form>')
-					.openOn(map);
-			}
-
-			map.on('click', onMapClick);
-			</script>
+	
 	
 	<div class=wrapper>
 
@@ -97,13 +49,13 @@
 				<p>Estadísticas de crímenes</p>
 				<c:forEach items="${requestScope.incidentes}" var="incidente">
 					<span> <c:out value="${incidente.key}" />:
-						<div class="w3-grey w3-round-xlarge" style="width: 90%">
-							<div class="w3-container w3-blue w3-round-xlarge"
-								style="width: ${incidente.value}%">
+						<span class="w3-grey w3-round-xlarge"><br>
+							<span class="w3-container w3-blue w3-round-xlarge"
+								style="width: ${incidente.value}%"><br>
 								<span> <c:out value="${incidente.value}" />%
 								</span>
-							</div>
-						</div>
+							</span>
+						</span>
 					</span>
 					<br>
 				</c:forEach>
@@ -131,9 +83,8 @@
 					value="Ver noticias relacionadas con este lugar">
 			</form>
 			<br> <br>
-
-			<div id="map"></div>
 		</div>
+		<div id="map"></div>
 		
 		<!--
 		<c:forEach items="${requestScope.lVenues}" var="venue">
@@ -143,5 +94,10 @@
 		-->
 
 	</div>
+	<!--  EN CASO DE BUSCAR POR MAPA EL NOMBRE SE PRINTA ASI -->
+	<span><c:out value="${nombreLL}" /></span>
+
+	<br>
+	<script type="text/javascript" src="./js/venuesMiniMap.js"></script>
 </body>
 </html>

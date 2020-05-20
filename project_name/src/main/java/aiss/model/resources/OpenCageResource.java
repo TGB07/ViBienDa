@@ -12,9 +12,9 @@ import aiss.model.opencage.LLNameSearch;
 
 public class OpenCageResource {
 
-	private static final String OpenCage_API_KEY = "07cecfd3cd97455b87fae72871cefe05";
+//	private static final String OpenCage_API_KEY = "07cecfd3cd97455b87fae72871cefe05";
 	//Clave pruebas
-//	private static final String OpenCage_API_KEY = "d83410cb3adb485497f280a62deb45f6";
+	private static final String OpenCage_API_KEY = "d83410cb3adb485497f280a62deb45f6";
 	private static final Logger log = Logger.getLogger(OpenCageResource.class.getName());
  
 	public LLNameSearch getLatitudLongitud(String query) throws UnsupportedEncodingException {

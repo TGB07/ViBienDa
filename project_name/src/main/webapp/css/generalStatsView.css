@@ -1,9 +1,16 @@
 body {
   font-family: "Lato", sans-serif;
 }
-
-/*.w3-grey .w3-round-xlarge{
+#map{
+	position: absolute;
+	bottom:0;
+	right:0;
+    height:50%;
+    width:50%;
+    z-index:900;
+}
+.w3-grey .w3-round-xlarge{
 	width: 90%;
 	display: flex;
 	justify-content: center;
-}*/
+}
