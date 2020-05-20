@@ -94,12 +94,12 @@ public class GetAllUserListsController extends HttpServlet {
 //			request.setAttribute("detallesListaUsuario", detallesListaUsuario);
 			
 			// Forward view
-			request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);;
+			request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);
 		}
 		
 		else {
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
-			request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 		
 	}
