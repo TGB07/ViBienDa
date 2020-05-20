@@ -17,7 +17,6 @@ import aiss.model.foursquare.FoursquareToken;
 import aiss.model.foursquare.listD.Response;
 import aiss.model.foursquare.list.FoursquareList;
 import aiss.model.foursquare.list.Item_;
-import aiss.model.foursquare.listD.FoursquareListDetails;
 import aiss.model.resources.FoursquareResource;
 
 public class GetAllUserListsController extends HttpServlet {
