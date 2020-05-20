@@ -30,6 +30,7 @@ import aiss.model.resources.OpenCageResource;
 /**
  * Servlet implementation class SearchController
  */
+@SuppressWarnings("unused")
 public class SearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -118,7 +119,17 @@ public class SearchController extends HttpServlet {
 //			}
 //			request.setAttribute("incidentes", incidenteTotal);
 //		}
-
+		
+		//INCIDENTES PARA PROBAR
+		Map<String, Double> incidenteTotal = new HashMap<String, Double>();
+		incidenteTotal.put("incidente1", 10.2);
+		incidenteTotal.put("incidente2", 20.8);
+		incidenteTotal.put("incidente3", 38.5);
+		incidenteTotal.put("incidente4", 11.5);
+		incidenteTotal.put("incidente5", 19.0);
+		request.setAttribute("incidentes", incidenteTotal);
+		
+		
 		// Load recommended venues
 
 		FoursquareResource fsResource = new FoursquareResource();

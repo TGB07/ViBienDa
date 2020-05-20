@@ -14,3 +14,10 @@ body {
 	display: flex;
 	justify-content: center;
 }
+.incidentButton{
+	border: 3px solid black;
+	cursor: pointer;
+	width: 100%;
+	background-color: transparent;	
+	color: white;
+}

@@ -54,15 +54,23 @@
 			<div class=parametros>
 				<p>Estadísticas de crímenes</p>
 				<c:forEach items="${requestScope.incidentes}" var="incidente">
-					<span> <c:out value="${incidente.key}" />:
-						<span class="w3-grey w3-round-xlarge"><br>
-							<span class="w3-container w3-blue w3-round-xlarge"
-								style="width: ${incidente.value}%"><br>
-								<span> <c:out value="${incidente.value}" />%
-								</span>
+					<form action=CrimeStatsController method = POST>
+						<input type=hidden name=lat value="${lat}">
+						<input type=hidden name=lon value="${lon}">
+						<input type=hidden name=tipoCrimen value="${incidente.key}">	
+						
+						<button type=submit class = "incidentButton">	
+							<span > <c:out value="${incidente.key}" />:
+								<div class="w3-grey w3-round-xlarge">
+									<div class="w3-container w3-blue w3-round-xlarge"
+										style="width: ${incidente.value}%"><br>
+										<span> <c:out value="${incidente.value}" />%
+										</span>
+									</div>
+								</div>
 							</span>
-						</span>
-					</span>
+						</button>
+					</form>
 					<br>
 				</c:forEach>
 			</div>
@@ -95,6 +103,9 @@
 		
 		<c:set var="lat" value="${lat}"/>
 		<c:set var="lon" value="${lon}"/>
+		
+		
+        
 		<script>
 			var lat = '${lat}';
 			var lon = '${lon}';
