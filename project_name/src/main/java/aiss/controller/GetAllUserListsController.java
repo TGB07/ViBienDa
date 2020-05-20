@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.foursquare.FoursquareToken;
-import aiss.model.foursquare.listD.Response;
 import aiss.model.foursquare.list.FoursquareList;
 import aiss.model.foursquare.list.Item_;
 import aiss.model.resources.FoursquareResource;
@@ -54,13 +53,13 @@ public class GetAllUserListsController extends HttpServlet {
 			
 			List<Item_> listaDelUsuario = fl.getResponse().getLists().getItems();
 			Map<String, String> infoListasDelUsuario = new HashMap<String, String>();//clave: id lista; valor: nombre lista 
-			List<Response> detallesListaUsuario = new ArrayList<Response>();
+			List<aiss.model.foursquare.listD.List> detallesListaUsuario = new ArrayList<aiss.model.foursquare.listD.List>();
 			
 			for (int i = 0; i < listaDelUsuario.size(); i++) {
 				String id= listaDelUsuario.get(i).getId();
 				String nLista= listaDelUsuario.get(i).getName();
 				infoListasDelUsuario.put(id, nLista);
-				detallesListaUsuario.add(fsResource.getVenuesList(accessToken, id).getResponse());
+				detallesListaUsuario.add(fsResource.getVenuesList(accessToken, id).getResponse().getList());
 			}
 			
 			request.setAttribute("infoListasDelUsuario", infoListasDelUsuario);
