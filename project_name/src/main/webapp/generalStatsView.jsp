@@ -51,7 +51,7 @@
 			</h1>
 			<!-- Parte de estadisticas de crimeness -->
 
-			<!-- <div class=parametros>
+			<div class=parametros>
 				<p>Estadísticas de crímenes</p>
 				<c:forEach items="${requestScope.incidentes}" var="incidente">
 					<span> <c:out value="${incidente.key}" />:
@@ -65,25 +65,13 @@
 					</span>
 					<br>
 				</c:forEach>
-			</div>  -->
-
-			<!-- Codigo pruebas css -->
-			<div class=parametros>
-				<p>Estadísticas de crímenes</p>
-				<p>Crimen tipo A:</p>
-				<span class="w3-grey w3-round-xlarge"><br> <span
-					class="w3-container w3-blue w3-round-xlarge" style="width: 25%"><br>
-						<span> <c:out value="25" />%
-					</span> </span> </span> <br>
 			</div>
-
-
-
 		</div>
 
 
 		<!-- Parte derecha grid -->
 		<div class="w3-col s8 w3-dark-grey w3-center">
+			
 			<br> <br> <br> <span> Latitud del nombre: <c:out
 					value="${lat}"></c:out>
 			</span> <br> <span> Longitud del nombre: <c:out value="${lon}"></c:out>
@@ -104,14 +92,29 @@
 			</form>
 			<br> <br>
 		</div>
+		
+		<c:set var="lat" value="${lat}"/>
+		<c:set var="lon" value="${lon}"/>
+		<script>
+			var lat = '${lat}';
+			var lon = '${lon}';
+		</script>
 		<div id="map"></div>
+		
 
-		<!--
-		<c:forEach items="${requestScope.lVenues}" var="venue">
-			<span> LugarRecomendado: <c:out value="${venue}" /></span>
-			<br>
-		</c:forEach>
-		-->
+		<script>
+			var venues = [];
+			var venue;
+			<c:forEach items="${requestScope.lVenues}" var="venue">
+				venue = {
+						name:"${venue.name}",
+						lat:"${venue.location.lat}",
+						lon:"${venue.location.lng}",
+				};
+				venues.push(venue);
+			</c:forEach>
+
+		</script>
 
 	</div>
 	<!--  EN CASO DE BUSCAR POR MAPA EL NOMBRE SE PRINTA ASI -->

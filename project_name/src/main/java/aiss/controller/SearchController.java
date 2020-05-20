@@ -121,18 +121,18 @@ public class SearchController extends HttpServlet {
 
 		// Load recommended venues
 
-//		FoursquareResource fsResource = new FoursquareResource();
-//		FoursquareSearch fsSearch = fsResource.getRecommendedVenues(lat, lon, radio);
+		FoursquareResource fsResource = new FoursquareResource();
+		FoursquareSearch fsSearch = fsResource.getRecommendedVenues(lat, lon, radio);
 
-//		Venue item = null;
-//		List<String> lVenues = new ArrayList<String>();
-//		List<Venue> items = fsSearch.getResponse().getVenues();
-//		System.out.println(items);
-//
-//		if (items != null && !items.isEmpty()) {
-//
-//			request.setAttribute("lVenues", items);
-//			
+		Venue item = null;
+		List<String> lVenues = new ArrayList<String>();
+		List<Venue> items = fsSearch.getResponse().getVenues();
+		System.out.println(items);
+
+		if (items != null && !items.isEmpty()) {
+
+			request.setAttribute("lVenues", items);
+			
 //			for (int i = 0; i < items.size(); i++) {
 //				item = items.get(i);
 //				if(!item.getCategories().isEmpty()) {
@@ -143,11 +143,11 @@ public class SearchController extends HttpServlet {
 //				}
 //			}
 //			request.setAttribute("lVenues", lVenues);
-//
-//		} else {
-//			log.log(Level.INFO, "No recommended venues at the given location");
-//		}
-//
+
+		} else {
+			log.log(Level.INFO, "No recommended venues at the given location");
+		}
+
 		// Forward view
 		request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);
 	}
