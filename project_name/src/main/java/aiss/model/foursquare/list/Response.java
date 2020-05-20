@@ -12,23 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "list"
+    "lists"
 })
 public class Response {
 
-    @JsonProperty("list")
-    private List list;
+    @JsonProperty("lists")
+    private Lists lists;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("list")
-    public List getList() {
-        return list;
+    @JsonProperty("lists")
+    public Lists getLists() {
+        return lists;
     }
 
-    @JsonProperty("list")
-    public void setList(List list) {
-        this.list = list;
+    @JsonProperty("lists")
+    public void setLists(Lists lists) {
+        this.lists = lists;
     }
 
     @JsonAnyGetter

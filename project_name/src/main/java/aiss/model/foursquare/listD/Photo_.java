@@ -1,5 +1,5 @@
 
-package aiss.model.foursquare.list;
+package aiss.model.foursquare.listD;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "suffix",
     "width",
     "height",
-    "user",
     "visibility"
 })
 public class Photo_ {
@@ -35,8 +34,6 @@ public class Photo_ {
     private Integer width;
     @JsonProperty("height")
     private Integer height;
-    @JsonProperty("user")
-    private User_ user;
     @JsonProperty("visibility")
     private String visibility;
     @JsonIgnore
@@ -100,16 +97,6 @@ public class Photo_ {
     @JsonProperty("height")
     public void setHeight(Integer height) {
         this.height = height;
-    }
-
-    @JsonProperty("user")
-    public User_ getUser() {
-        return user;
-    }
-
-    @JsonProperty("user")
-    public void setUser(User_ user) {
-        this.user = user;
     }
 
     @JsonProperty("visibility")

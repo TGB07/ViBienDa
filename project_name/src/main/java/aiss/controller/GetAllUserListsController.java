@@ -38,7 +38,7 @@ public class GetAllUserListsController extends HttpServlet {
 		
 		request.setAttribute("accessToken", accessToken);
 		
-		log.log(Level.FINE, "AccessToken got it " + accessToken);
+		log.log(Level.FINE, "AccessToken retrie ved " + accessToken);
 		
 		// Forward view
 		request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);;

@@ -1,5 +1,5 @@
 
-package aiss.model.foursquare.list;
+package aiss.model.foursquare.listD;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "count"
+    "list"
 })
-public class ListItems {
+public class Response {
 
-    @JsonProperty("count")
-    private Integer count;
+    @JsonProperty("list")
+    private List list;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("count")
-    public Integer getCount() {
-        return count;
+    @JsonProperty("list")
+    public List getList() {
+        return list;
     }
 
-    @JsonProperty("count")
-    public void setCount(Integer count) {
-        this.count = count;
+    @JsonProperty("list")
+    public void setList(List list) {
+        this.list = list;
     }
 
     @JsonAnyGetter

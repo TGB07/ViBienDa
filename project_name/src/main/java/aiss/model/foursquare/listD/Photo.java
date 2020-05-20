@@ -1,5 +1,5 @@
 
-package aiss.model.foursquare.list;
+package aiss.model.foursquare.listD;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +13,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "prefix",
-    "suffix",
-    "default"
+    "suffix"
 })
 public class Photo {
 
@@ -22,8 +21,6 @@ public class Photo {
     private String prefix;
     @JsonProperty("suffix")
     private String suffix;
-    @JsonProperty("default")
-    private Boolean _default;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -45,16 +42,6 @@ public class Photo {
     @JsonProperty("suffix")
     public void setSuffix(String suffix) {
         this.suffix = suffix;
-    }
-
-    @JsonProperty("default")
-    public Boolean getDefault() {
-        return _default;
-    }
-
-    @JsonProperty("default")
-    public void setDefault(Boolean _default) {
-        this._default = _default;
     }
 
     @JsonAnyGetter

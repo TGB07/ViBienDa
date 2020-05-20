@@ -1,5 +1,5 @@
 
-package aiss.model.foursquare.list;
+package aiss.model.foursquare.listD;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,10 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "id",
     "firstName",
-    "lastName",
-    "gender",
-    "relationship",
-    "photo"
+    "photo",
+    "type"
 })
 public class User {
 
@@ -25,14 +23,10 @@ public class User {
     private String id;
     @JsonProperty("firstName")
     private String firstName;
-    @JsonProperty("lastName")
-    private String lastName;
-    @JsonProperty("gender")
-    private String gender;
-    @JsonProperty("relationship")
-    private String relationship;
     @JsonProperty("photo")
     private Photo photo;
+    @JsonProperty("type")
+    private String type;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -56,36 +50,6 @@ public class User {
         this.firstName = firstName;
     }
 
-    @JsonProperty("lastName")
-    public String getLastName() {
-        return lastName;
-    }
-
-    @JsonProperty("lastName")
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @JsonProperty("gender")
-    public String getGender() {
-        return gender;
-    }
-
-    @JsonProperty("gender")
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    @JsonProperty("relationship")
-    public String getRelationship() {
-        return relationship;
-    }
-
-    @JsonProperty("relationship")
-    public void setRelationship(String relationship) {
-        this.relationship = relationship;
-    }
-
     @JsonProperty("photo")
     public Photo getPhoto() {
         return photo;
@@ -94,6 +58,16 @@ public class User {
     @JsonProperty("photo")
     public void setPhoto(Photo photo) {
         this.photo = photo;
+    }
+
+    @JsonProperty("type")
+    public String getType() {
+        return type;
+    }
+
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
     }
 
     @JsonAnyGetter

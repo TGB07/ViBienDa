@@ -1,5 +1,5 @@
 
-package aiss.model.foursquare.list;
+package aiss.model.foursquare.listD;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -2,7 +2,6 @@
 package aiss.model.foursquare.list;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -13,36 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "count",
-    "items"
+    "type",
+    "item"
 })
-public class Collaborators {
+public class Notification {
 
-    @JsonProperty("count")
-    private Integer count;
-    @JsonProperty("items")
-    private List<Object> items = null;
+    @JsonProperty("type")
+    private String type;
+    @JsonProperty("item")
+    private Item item;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("count")
-    public Integer getCount() {
-        return count;
+    @JsonProperty("type")
+    public String getType() {
+        return type;
     }
 
-    @JsonProperty("count")
-    public void setCount(Integer count) {
-        this.count = count;
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
     }
 
-    @JsonProperty("items")
-    public List<Object> getItems() {
-        return items;
+    @JsonProperty("item")
+    public Item getItem() {
+        return item;
     }
 
-    @JsonProperty("items")
-    public void setItems(List<Object> items) {
-        this.items = items;
+    @JsonProperty("item")
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     @JsonAnyGetter

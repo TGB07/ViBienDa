@@ -9,15 +9,17 @@ import org.restlet.resource.ResourceException;
 
 import aiss.model.foursquare.FoursquareSearch;
 import aiss.model.foursquare.FoursquareToken;
+import aiss.model.foursquare.list.FoursquareList;
+import aiss.model.foursquare.listD.FoursquareListDetails;
 
 public class FoursquareResource {
 	
 	private static final String Foursquare_Client_Id = "HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC";
 	private static final String Foursquare_Client_Secret = "JR3ENW0XR5FAURWCPLZS5INDLFPB4IYOWYDNUXL0AXRWEGVT";
-	private static final String CALLBACK_URI = "http://localhost:8090/UserListsController";
+	private static final String CALLBACK_URI = "http://localhost:8090/GetAllUserListsController";
 
 	private static final Logger log = Logger.getLogger(FoursquareResource.class.getName());
-	
+		
 	public FoursquareSearch getRecommendedVenues(Double lat, Double lon, Double radio) throws UnsupportedEncodingException {
 		
 		ClientResource cr=null;
@@ -41,7 +43,7 @@ public class FoursquareResource {
 		//PARA OBTENER EL ACCESS TOKEN A PARTIR DEL CODIGO OBTENIDO TRAS ACEPTAR EL USUARIO LOS PERMISOS
 		ClientResource cr = null;
 		FoursquareToken accessToken = null;
-		
+				
 		String uri = "https://foursquare.com/oauth2/access_token?client_id=" + Foursquare_Client_Id + "&client_secret=" + Foursquare_Client_Secret + "&grant_type=authorization_code&redirect_uri=" + CALLBACK_URI + "&code=" + code;
 		log.log(Level.FINE, "FoursquareAccessToken URI: " + uri);
 		
@@ -54,4 +56,100 @@ public class FoursquareResource {
 		}
 		return accessToken;
 	}
+	
+	public FoursquareList getUserLists(String token) throws UnsupportedEncodingException{
+		
+		ClientResource cr = null;
+		FoursquareList fl= null;
+		
+		//PARAMETRO self para usuario actual
+		String uri = "https://api.foursquare.com/v2/users/self/lists?oauth_token=" + token + "&group=created" + "&v=20200101";
+		log.log(Level.FINE, "FoursquareGetUserLists URI:" + uri);
+		
+		try {
+			cr= new ClientResource(uri);
+			fl= cr.get(FoursquareList.class);
+		}
+		catch (ResourceException re) {
+			System.err.println("Error when retrieving the userLists" + cr.getResponse().getStatus());
+		}
+		
+		return fl;
+	}
+	
+	public boolean addVenue(String token, String listId, String venueId) throws UnsupportedEncodingException {
+		
+		ClientResource cr = null;
+		boolean result=true;
+		
+		String uri = "https://api.foursquare.com/v2/lists/" + listId + "/additem?oauth_token=" + token + "venueId=" + venueId + "&v=20200101";
+		log.log(Level.FINE, "Foursquare AddVenue URI:" + uri);
+		
+		try {
+			cr = new ClientResource(uri);
+			cr.post(" ");
+		}
+		catch (ResourceException re) {
+			result=false;
+			System.err.println("Error when adding a venue to the list" + cr.getResponse().getStatus());
+		}
+		return result;
+	}
+	
+	public boolean createList(String token, String name, String descripcion) throws UnsupportedEncodingException {
+		
+		ClientResource cr = null;
+		boolean result=true;
+		
+		String uri = "https://api.foursquare.com/v2/lists/add?oauth_token=" + token + "&name=" + name + "&description=" + descripcion + "&v=20200101";
+		log.log(Level.FINE, "Foursquare CreateList URI:" + uri);
+
+		try {
+			cr = new ClientResource(uri);
+			cr.post(" ");
+		}
+		catch (ResourceException re) {
+			result=false;
+			System.err.println("Error when creating a list" + cr.getResponse().getStatus());
+		}
+		return result;
+	}
+	
+	public FoursquareListDetails getVenuesList(String token, String listId) throws UnsupportedEncodingException {
+		
+		ClientResource cr= null;
+		FoursquareListDetails fld=null;
+		
+		String uri= "https://api.foursquare.com/v2/lists/" + listId + "?oauth_token=" + token + "&v=20200101";
+		log.log(Level.FINE, "Foursquare VenuesListDetails URI:" + uri);
+		
+		try {
+			cr= new ClientResource(uri);
+			fld= cr.get(FoursquareListDetails.class);
+		}
+		catch(ResourceException re) {
+			System.err.println("Error when retriving the details of a user list" + cr.getResponse().getStatus());
+		}
+		return fld;
+	}
+	
+	public boolean deleteVenue(String token, String listId, String venueId) {
+		
+		ClientResource cr = null;
+		boolean result=true;
+		
+		String uri = "https://api.foursquare.com/v2/lists/" + listId + "/deleteitem?oauth_token=" + token + "venueId=" + venueId + "&v=20200101";
+		log.log(Level.FINE, "Foursquare DeleteVenue URI:" + uri);
+		
+		try {
+			cr = new ClientResource(uri);
+			cr.post(" ");
+		}
+		catch (ResourceException re) {
+			result=false;
+			System.err.println("Error when deleting a venue of the list" + cr.getResponse().getStatus());
+		}
+		return result;
+	}
+	
 }

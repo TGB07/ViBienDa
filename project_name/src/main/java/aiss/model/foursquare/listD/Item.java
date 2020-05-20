@@ -1,5 +1,5 @@
 
-package aiss.model.foursquare.list;
+package aiss.model.foursquare.listD;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,49 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "label",
-    "lat",
-    "lng"
+    "category",
+    "count"
 })
-public class LabeledLatLng {
+public class Item {
 
-    @JsonProperty("label")
-    private String label;
-    @JsonProperty("lat")
-    private Double lat;
-    @JsonProperty("lng")
-    private Double lng;
+    @JsonProperty("category")
+    private Category category;
+    @JsonProperty("count")
+    private Integer count;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("label")
-    public String getLabel() {
-        return label;
+    @JsonProperty("category")
+    public Category getCategory() {
+        return category;
     }
 
-    @JsonProperty("label")
-    public void setLabel(String label) {
-        this.label = label;
+    @JsonProperty("category")
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    @JsonProperty("lat")
-    public Double getLat() {
-        return lat;
+    @JsonProperty("count")
+    public Integer getCount() {
+        return count;
     }
 
-    @JsonProperty("lat")
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
-
-    @JsonProperty("lng")
-    public Double getLng() {
-        return lng;
-    }
-
-    @JsonProperty("lng")
-    public void setLng(Double lng) {
-        this.lng = lng;
+    @JsonProperty("count")
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     @JsonAnyGetter

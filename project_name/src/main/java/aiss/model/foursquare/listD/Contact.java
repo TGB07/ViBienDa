@@ -1,5 +1,5 @@
 
-package aiss.model.foursquare.list;
+package aiss.model.foursquare.listD;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,49 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "prefix",
-    "suffix",
-    "default"
+    "phone",
+    "formattedPhone"
 })
-public class Photo {
+public class Contact {
 
-    @JsonProperty("prefix")
-    private String prefix;
-    @JsonProperty("suffix")
-    private String suffix;
-    @JsonProperty("default")
-    private Boolean _default;
+    @JsonProperty("phone")
+    private String phone;
+    @JsonProperty("formattedPhone")
+    private String formattedPhone;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("prefix")
-    public String getPrefix() {
-        return prefix;
+    @JsonProperty("phone")
+    public String getPhone() {
+        return phone;
     }
 
-    @JsonProperty("prefix")
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
+    @JsonProperty("phone")
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    @JsonProperty("suffix")
-    public String getSuffix() {
-        return suffix;
+    @JsonProperty("formattedPhone")
+    public String getFormattedPhone() {
+        return formattedPhone;
     }
 
-    @JsonProperty("suffix")
-    public void setSuffix(String suffix) {
-        this.suffix = suffix;
-    }
-
-    @JsonProperty("default")
-    public Boolean getDefault() {
-        return _default;
-    }
-
-    @JsonProperty("default")
-    public void setDefault(Boolean _default) {
-        this._default = _default;
+    @JsonProperty("formattedPhone")
+    public void setFormattedPhone(String formattedPhone) {
+        this.formattedPhone = formattedPhone;
     }
 
     @JsonAnyGetter

@@ -13,26 +13,56 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
+    "name",
+    "description",
+    "type",
+    "user",
+    "editable",
+    "public",
+    "collaborative",
+    "url",
+    "canonicalUrl",
     "createdAt",
-    "tip",
-    "venue",
-    "index",
-    "isNew"
+    "updatedAt",
+    "photo",
+    "followers",
+    "listItems",
+    "following"
 })
 public class Item_ {
 
     @JsonProperty("id")
     private String id;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("description")
+    private String description;
+    @JsonProperty("type")
+    private String type;
+    @JsonProperty("user")
+    private User user;
+    @JsonProperty("editable")
+    private Boolean editable;
+    @JsonProperty("public")
+    private Boolean _public;
+    @JsonProperty("collaborative")
+    private Boolean collaborative;
+    @JsonProperty("url")
+    private String url;
+    @JsonProperty("canonicalUrl")
+    private String canonicalUrl;
     @JsonProperty("createdAt")
     private Integer createdAt;
-    @JsonProperty("tip")
-    private Tip tip;
-    @JsonProperty("venue")
-    private Venue venue;
-    @JsonProperty("index")
-    private Integer index;
-    @JsonProperty("isNew")
-    private Boolean isNew;
+    @JsonProperty("updatedAt")
+    private Integer updatedAt;
+    @JsonProperty("photo")
+    private Photo_ photo;
+    @JsonProperty("followers")
+    private Followers followers;
+    @JsonProperty("listItems")
+    private ListItems listItems;
+    @JsonProperty("following")
+    private Boolean following;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -46,6 +76,96 @@ public class Item_ {
         this.id = id;
     }
 
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @JsonProperty("description")
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty("description")
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @JsonProperty("type")
+    public String getType() {
+        return type;
+    }
+
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @JsonProperty("user")
+    public User getUser() {
+        return user;
+    }
+
+    @JsonProperty("user")
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @JsonProperty("editable")
+    public Boolean getEditable() {
+        return editable;
+    }
+
+    @JsonProperty("editable")
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
+    }
+
+    @JsonProperty("public")
+    public Boolean getPublic() {
+        return _public;
+    }
+
+    @JsonProperty("public")
+    public void setPublic(Boolean _public) {
+        this._public = _public;
+    }
+
+    @JsonProperty("collaborative")
+    public Boolean getCollaborative() {
+        return collaborative;
+    }
+
+    @JsonProperty("collaborative")
+    public void setCollaborative(Boolean collaborative) {
+        this.collaborative = collaborative;
+    }
+
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @JsonProperty("canonicalUrl")
+    public String getCanonicalUrl() {
+        return canonicalUrl;
+    }
+
+    @JsonProperty("canonicalUrl")
+    public void setCanonicalUrl(String canonicalUrl) {
+        this.canonicalUrl = canonicalUrl;
+    }
+
     @JsonProperty("createdAt")
     public Integer getCreatedAt() {
         return createdAt;
@@ -56,44 +176,54 @@ public class Item_ {
         this.createdAt = createdAt;
     }
 
-    @JsonProperty("tip")
-    public Tip getTip() {
-        return tip;
+    @JsonProperty("updatedAt")
+    public Integer getUpdatedAt() {
+        return updatedAt;
     }
 
-    @JsonProperty("tip")
-    public void setTip(Tip tip) {
-        this.tip = tip;
+    @JsonProperty("updatedAt")
+    public void setUpdatedAt(Integer updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    @JsonProperty("venue")
-    public Venue getVenue() {
-        return venue;
+    @JsonProperty("photo")
+    public Photo_ getPhoto() {
+        return photo;
     }
 
-    @JsonProperty("venue")
-    public void setVenue(Venue venue) {
-        this.venue = venue;
+    @JsonProperty("photo")
+    public void setPhoto(Photo_ photo) {
+        this.photo = photo;
     }
 
-    @JsonProperty("index")
-    public Integer getIndex() {
-        return index;
+    @JsonProperty("followers")
+    public Followers getFollowers() {
+        return followers;
     }
 
-    @JsonProperty("index")
-    public void setIndex(Integer index) {
-        this.index = index;
+    @JsonProperty("followers")
+    public void setFollowers(Followers followers) {
+        this.followers = followers;
     }
 
-    @JsonProperty("isNew")
-    public Boolean getIsNew() {
-        return isNew;
+    @JsonProperty("listItems")
+    public ListItems getListItems() {
+        return listItems;
     }
 
-    @JsonProperty("isNew")
-    public void setIsNew(Boolean isNew) {
-        this.isNew = isNew;
+    @JsonProperty("listItems")
+    public void setListItems(ListItems listItems) {
+        this.listItems = listItems;
+    }
+
+    @JsonProperty("following")
+    public Boolean getFollowing() {
+        return following;
+    }
+
+    @JsonProperty("following")
+    public void setFollowing(Boolean following) {
+        this.following = following;
     }
 
     @JsonAnyGetter

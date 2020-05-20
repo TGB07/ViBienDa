@@ -12,36 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "category",
-    "count"
+    "unreadCount"
 })
 public class Item {
 
-    @JsonProperty("category")
-    private Category category;
-    @JsonProperty("count")
-    private Integer count;
+    @JsonProperty("unreadCount")
+    private Integer unreadCount;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("category")
-    public Category getCategory() {
-        return category;
+    @JsonProperty("unreadCount")
+    public Integer getUnreadCount() {
+        return unreadCount;
     }
 
-    @JsonProperty("category")
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    @JsonProperty("count")
-    public Integer getCount() {
-        return count;
-    }
-
-    @JsonProperty("count")
-    public void setCount(Integer count) {
-        this.count = count;
+    @JsonProperty("unreadCount")
+    public void setUnreadCount(Integer unreadCount) {
+        this.unreadCount = unreadCount;
     }
 
     @JsonAnyGetter

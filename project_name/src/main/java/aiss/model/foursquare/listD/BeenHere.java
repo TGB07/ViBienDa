@@ -1,5 +1,5 @@
 
-package aiss.model.foursquare.list;
+package aiss.model.foursquare.listD;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,36 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "meta",
-    "response"
+    "lastCheckinExpiredAt"
 })
-public class FoursquareListDetails {
+public class BeenHere {
 
-    @JsonProperty("meta")
-    private Meta meta;
-    @JsonProperty("response")
-    private Response response;
+    @JsonProperty("lastCheckinExpiredAt")
+    private Integer lastCheckinExpiredAt;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("meta")
-    public Meta getMeta() {
-        return meta;
+    @JsonProperty("lastCheckinExpiredAt")
+    public Integer getLastCheckinExpiredAt() {
+        return lastCheckinExpiredAt;
     }
 
-    @JsonProperty("meta")
-    public void setMeta(Meta meta) {
-        this.meta = meta;
-    }
-
-    @JsonProperty("response")
-    public Response getResponse() {
-        return response;
-    }
-
-    @JsonProperty("response")
-    public void setResponse(Response response) {
-        this.response = response;
+    @JsonProperty("lastCheckinExpiredAt")
+    public void setLastCheckinExpiredAt(Integer lastCheckinExpiredAt) {
+        this.lastCheckinExpiredAt = lastCheckinExpiredAt;
     }
 
     @JsonAnyGetter

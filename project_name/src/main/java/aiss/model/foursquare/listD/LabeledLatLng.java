@@ -1,5 +1,5 @@
 
-package aiss.model.foursquare.list;
+package aiss.model.foursquare.listD;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,49 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "lastCheckinExpiredAt"
+    "label",
+    "lat",
+    "lng"
 })
-public class BeenHere {
+public class LabeledLatLng {
 
-    @JsonProperty("lastCheckinExpiredAt")
-    private Integer lastCheckinExpiredAt;
+    @JsonProperty("label")
+    private String label;
+    @JsonProperty("lat")
+    private Double lat;
+    @JsonProperty("lng")
+    private Double lng;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("lastCheckinExpiredAt")
-    public Integer getLastCheckinExpiredAt() {
-        return lastCheckinExpiredAt;
+    @JsonProperty("label")
+    public String getLabel() {
+        return label;
     }
 
-    @JsonProperty("lastCheckinExpiredAt")
-    public void setLastCheckinExpiredAt(Integer lastCheckinExpiredAt) {
-        this.lastCheckinExpiredAt = lastCheckinExpiredAt;
+    @JsonProperty("label")
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    @JsonProperty("lat")
+    public Double getLat() {
+        return lat;
+    }
+
+    @JsonProperty("lat")
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    @JsonProperty("lng")
+    public Double getLng() {
+        return lng;
+    }
+
+    @JsonProperty("lng")
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     @JsonAnyGetter
