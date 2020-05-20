@@ -25,7 +25,7 @@ public class CrimeometerResource {
 	public static final MediaType JSON= MediaType.parse("application/json; charset=UTF-8");
 	
 	public CrimeStatsLLSearch getCrimeStatsLL(Double lat, Double lon) throws IOException {
-		return getCrimeStatsLL(lat,lon,"2019-04-20T15:53:00.000Z","2020-04-20T15:53:00.000Z");
+		return getCrimeStatsLL(lat,lon,"2019-01-01T15:53:00.000Z","2020-01-01T15:53:00.000Z");
 	}
 	public CrimeStatsLLSearch getCrimeStatsLL(Double lat, Double lon, String dateIni, String dateFin) throws IOException {
 				
