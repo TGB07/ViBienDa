@@ -12,15 +12,21 @@
 <!-- NavBar import -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	
+
 <!-- Map import -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">	
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-<script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/1.0.0-rc.2/esri-leaflet.js"></script>
-<script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
-<link rel="stylesheet" type="text/css" href="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/1.0.0-rc.2/esri-leaflet.js"></script>
+<script
+	src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- CSS -->
 <link rel="stylesheet" href="./css/generalStatsView.css">
@@ -29,8 +35,8 @@
 </head>
 <body>
 
-	
-	
+
+
 	<div class=wrapper>
 
 		<!-- NAV-BAR -->
@@ -45,7 +51,7 @@
 			</h1>
 			<!-- Parte de estadisticas de crimeness -->
 
-			<div class=parametros>
+			<!-- <div class=parametros>
 				<p>Estadísticas de crímenes</p>
 				<c:forEach items="${requestScope.incidentes}" var="incidente">
 					<span> <c:out value="${incidente.key}" />:
@@ -59,12 +65,26 @@
 					</span>
 					<br>
 				</c:forEach>
+			</div>  -->
+
+			<!-- Codigo pruebas css -->
+			<div class=parametros>
+				<p>Estadísticas de crímenes</p>
+				<p>Crimen tipo A:</p>
+				<span class="w3-grey w3-round-xlarge"><br> <span
+					class="w3-container w3-blue w3-round-xlarge" style="width: 25%"><br>
+						<span> <c:out value="25" />%
+					</span> </span> </span> <br>
 			</div>
 
+
+
 		</div>
+
+
 		<!-- Parte derecha grid -->
 		<div class="w3-col s8 w3-dark-grey w3-center">
-			<br> <br> <span> Latitud del nombre: <c:out
+			<br> <br> <br> <span> Latitud del nombre: <c:out
 					value="${lat}"></c:out>
 			</span> <br> <span> Longitud del nombre: <c:out value="${lon}"></c:out>
 			</span> <br> <br>
@@ -85,7 +105,7 @@
 			<br> <br>
 		</div>
 		<div id="map"></div>
-		
+
 		<!--
 		<c:forEach items="${requestScope.lVenues}" var="venue">
 			<span> LugarRecomendado: <c:out value="${venue}" /></span>
