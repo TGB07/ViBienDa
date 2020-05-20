@@ -23,10 +23,13 @@ public class CrimeometerResource {
 //	private static final String Crimeometer_API_KEY = "gE9XyNl7P4351razeB2Al3sE2yMOItV76iuOFIMT";
 	private static final Logger log = Logger.getLogger(CrimeometerResource.class.getName());
 	public static final MediaType JSON= MediaType.parse("application/json; charset=UTF-8");
-		 	
+	
 	public CrimeStatsLLSearch getCrimeStatsLL(Double lat, Double lon) throws IOException {
+		return getCrimeStatsLL(lat,lon,"2019-04-20T15:53:00.000Z","2020-04-20T15:53:00.000Z");
+	}
+	public CrimeStatsLLSearch getCrimeStatsLL(Double lat, Double lon, String dateIni, String dateFin) throws IOException {
 				
-		String uri = "https://api.crimeometer.com/v1/incidents/stats?lat="+ lat + "&lon=" + lon + "&distance=15km&datetime_ini=2019-04-20T15:53:00.000Z&datetime_end=2020-04-20T15:53:00.000Z&source=0";
+		String uri = "https://api.crimeometer.com/v1/incidents/stats?lat="+ lat + "&lon=" + lon + "&distance=15km&datetime_ini="+dateIni+"&datetime_end="+dateFin+"&source=0";
 		
 		log.log(Level.FINE, "Crimeometer URI: " + uri);
 		
