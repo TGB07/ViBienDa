@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.restlet.resource.ResourceException;
+
 import aiss.model.foursquare.FoursquareToken;
 import aiss.model.foursquare.list.FoursquareList;
 import aiss.model.foursquare.list.Item_;
@@ -37,35 +39,36 @@ public class GetAllUserListsController extends HttpServlet {
 		
 		/*
 		 * Obtenemos los parametros de la uri, en este caso para el OUATH obtenemos el code que se genera cuando el usuario acepta
-		 * los terminos de condiciones y uso. (Ver vista para CallBackURI)
+		 * los terminos de condiciones y uso.
 		 */
 		
 		String code = request.getParameter("code");
-		
 		request.setAttribute("code", code);
 		
 		if(code!=null) {
 			
 			FoursquareResource fsResource = new FoursquareResource();
 			FoursquareToken fsAcessToken= fsResource.getFoursquareAccessToken(code);
-			
+			try {
 			String accessToken = fsAcessToken.getAccessToken();
+			request.setAttribute("accessToken", accessToken);
 						
 			log.log(Level.FINE, "AccessToken retrieved " + accessToken);
 					
 			FoursquareList fl = fsResource.getUserLists(accessToken);
 			
 			List<Item_> listaDelUsuario = fl.getResponse().getLists().getItems();
-			Map<String, String> infoListasDelUsuario = new HashMap<String, String>();//clave: id lista; valor: nombre lista 
-			List<aiss.model.foursquare.listD.List> detallesListaUsuario = new ArrayList<aiss.model.foursquare.listD.List>();
+//			Map<String, String> infoListasDelUsuario = new HashMap<String, String>();//clave: id lista; valor: nombre lista 
+//			List<aiss.model.foursquare.listD.List> detallesListaUsuario = new ArrayList<aiss.model.foursquare.listD.List>();
 			
+			//MAP A CREAR PARA LOS DATOS:
 			//	[nombre | descripcion, followers, photo, venues]
 			Map<String, List<Object>> m = new HashMap<String, List<Object>>();
 			for(int i = 0; i<listaDelUsuario.size(); i++) {
 				Item_ lista = listaDelUsuario.get(i);
 				String id = lista.getId();
 				String name = lista.getName();
-				Photo_ photo = lista.getPhoto(); 
+//				Photo_ photo = lista.getPhoto(); 
 				
 				aiss.model.foursquare.listD.List detalles = fsResource.getVenuesList(accessToken, id).getResponse().getList();
 				String description = detalles.getDescription();
@@ -94,16 +97,22 @@ public class GetAllUserListsController extends HttpServlet {
 					m.put(name, s);
 				}
 			}
+			
 			request.setAttribute("listasLugares", m);
 						
 			// Forward view
 			request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);
+			}
+			catch (NullPointerException np) {
+				System.err.println("Error ???? accessToken" + np.getMessage());
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+			}
 		}
-		
 		else {
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
+		
 		
 	}
 	
