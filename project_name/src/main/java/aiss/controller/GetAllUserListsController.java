@@ -49,7 +49,7 @@ public class GetAllUserListsController extends HttpServlet {
 			FoursquareResource fsResource = new FoursquareResource();
 			FoursquareToken fsAcessToken= fsResource.getFoursquareAccessToken(code);
 			
-			String accessToken = request.getParameter("accesToken");
+			String accessToken = fsAcessToken.getAccessToken();
 						
 			log.log(Level.FINE, "AccessToken retrieved " + accessToken);
 					
