@@ -44,14 +44,13 @@ public class GetAllUserListsController extends HttpServlet {
 		
 		request.setAttribute("code", code);
 		
-		if(code!=null || "".equals(code)) {
+		if(code!=null) {
 			
 			FoursquareResource fsResource = new FoursquareResource();
 			FoursquareToken fsAcessToken= fsResource.getFoursquareAccessToken(code);
 			
-			String accessToken = fsAcessToken.getAccessToken();
-			request.setAttribute("accessToken", accessToken);
-			
+			String accessToken = request.getParameter("accesToken");
+						
 			log.log(Level.FINE, "AccessToken retrieved " + accessToken);
 					
 			FoursquareList fl = fsResource.getUserLists(accessToken);
@@ -80,6 +79,7 @@ public class GetAllUserListsController extends HttpServlet {
 				}
 				
 				List<Object> s = new ArrayList<Object>();
+				s.add(listaDelUsuario.get(i).getId());
 				s.add(description);
 				s.add(followers);
 				s.add(venues);
@@ -95,18 +95,7 @@ public class GetAllUserListsController extends HttpServlet {
 				}
 			}
 			request.setAttribute("listasLugares", m);
-			
-//			for (int i = 0; i < listaDelUsuario.size(); i++) {
-//				String id= listaDelUsuario.get(i).getId();
-//				String nLista= listaDelUsuario.get(i).getName();
-//				infoListasDelUsuario.put(id, nLista);
-//				detallesListaUsuario.add(fsResource.getVenuesList(accessToken, id).getResponse().getList());
-//			}
-			
-//			request.setAttribute("infoListasDelUsuario", infoListasDelUsuario);
-//			request.setAttribute("listaDelUsuario", listaDelUsuario);
-//			request.setAttribute("detallesListaUsuario", detallesListaUsuario);
-			
+						
 			// Forward view
 			request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);
 		}
