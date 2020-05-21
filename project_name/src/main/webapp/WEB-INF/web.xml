@@ -32,20 +32,31 @@
     <servlet-name>CrimeStatsController</servlet-name>
     <url-pattern>/CrimeStatsController</url-pattern>
   </servlet-mapping>
-  
-  
-  
+   <servlet>
+    <servlet-name>CreateVenuesListController</servlet-name>
+    <servlet-class>aiss.controller.CreateVenuesListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateVenuesListController</servlet-name>
+    <url-pattern>/CreateVenuesListController</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>AddVenueToListController</servlet-name>
+    <servlet-class>aiss.controller.AddVenueToListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddVenueToListController</servlet-name>
+    <url-pattern>/AddVenueToListController</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>DeleteVenueFromListController</servlet-name>
+    <servlet-class>aiss.controller.DeleteVenueFromListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteVenueFromListController</servlet-name>
+    <url-pattern>/DeleteVenueFromListController</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>test</display-name>
-    <servlet-name>test</servlet-name>
-    <servlet-class>aiss.controller.test</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/test</url-pattern>
-  </servlet-mapping>
 </web-app>
