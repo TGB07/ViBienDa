@@ -55,7 +55,7 @@ public class SearchController extends HttpServlet {
 		OpenCageResource ocResource = new OpenCageResource();
 
 		Double lat = null, lon = null;
-		Double radio = 100.;
+		Double radio = 10.;
 		if (barQuery == null) {
 			// Se ha realizado el request a traves del mapa interactivo
 
