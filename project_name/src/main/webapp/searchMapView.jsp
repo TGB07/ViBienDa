@@ -32,9 +32,12 @@
 	  height: 100%;
 	  z-index: 0;
 	}
-	#map .geocoder-control-input{
-		margin-top: 130px;
+	.geocoder-control-input{
+		top: 130px;
 		min-width: 25px;
+	}
+	.geocoder-control-suggestions{
+		top:156px;
 	}
 	.leaflet-control-zoom{
 		position: absolute;
@@ -44,19 +47,23 @@
 		position: absolute;
 		top: 80px;
 		height: 40px;
-		width: 95%;
-		right: 0;
+		width: 50%;
+		left: 50%;
+		margin-left: -25%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		z-index:1;
 		opacity:0.7;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 	.info h2{
 		color: white;
 		font-size: 25px;
 		text-align: center;
-		width: 50%;
+		width: 100%;
 		background:black;
 		border-radius: 50px;
 		height: 100%;
@@ -68,13 +75,19 @@
 	}
 	
 	@media screen and (max-width: 575px){
-		#map .geocoder-control-input{
-			margin-top: 185px;
+		.geocoder-control-input{
+			top: 185px;
 			min-width: 25px;
+		}
+		.geocoder-control-suggestions{
+			top:211px;
 		}
 		.leaflet-control-zoom{
 			position: absolute;
 			top: 110px;
+		}
+		.info{
+			top:110px;
 		}
 	}
 	

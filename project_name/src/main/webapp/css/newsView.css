@@ -1,0 +1,71 @@
+.wrapper{
+	position: absolute;
+	top:0;
+	width: 100%;
+	background-color: #B9B9B9;
+}
+.news-container{
+	margin-top: 90px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.heading{
+	margin-top: 60px;
+	margin-bottom: 20px;
+	color:graytext;
+}
+.noticia{
+	position: relative;
+	background-color: white;
+	border-radius: 20px;
+	margin-bottom: 40px;
+	
+	display: grid;
+	grid-template-areas: "imagen titulo fecha"
+						 "imagen descripcion boton";
+	grid-template-rows: 1fr 5fr;
+	grid-template-columns: 200px 6fr 1fr;
+}
+.noticia .img{
+	position: absolute;
+	grid-area: imagen;
+	padding: 10px;
+	height: 100%;
+}
+img{
+	border-radius: 20px;
+	height: 100%;
+	width: 100%;
+}
+.noticia .titulo{
+	position: absolute;
+	grid-area: titulo;
+	width: 90%;
+	font-weight: 800;
+	top: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.noticia .fecha{
+	position: absolute;
+	grid-area: fecha;
+	top:10px;
+	right:15px;
+	opacity: 0.6;
+}
+.noticia .descripcion{
+	position: absolute;
+	top:10px;
+	width: 95%;
+	height: 80%;
+	text-align: justify;
+	grid-area: descripcion;
+	overflow-y: hidden;
+}
+.noticia .enlace{
+	position: absolute;
+	grid-area: boton;
+	bottom: 10px;
+	right: 15px;
+}

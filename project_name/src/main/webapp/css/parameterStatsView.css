@@ -1,6 +1,8 @@
 * {box-sizing: border-box}
 
-
+html{
+	overflow: hidden;
+}
 .verticalTabs{
 	margin-top:60px;
  
