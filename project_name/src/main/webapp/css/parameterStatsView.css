@@ -1,0 +1,75 @@
+* {box-sizing: border-box}
+
+
+.verticalTabs{
+	margin-top:60px;
+ 
+}
+/* Style the tab */
+.tab {
+  float: left;
+  border: none;
+  background-color: transparent;
+  width: 30%;
+  padding-left: 30px;
+  margin-top: 0px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  display: block;
+  background-color: royalBlue;
+  color: white;
+  padding: 22px 16px;
+  width: 100%;
+  height: 140px;
+  border: 2px solid royalblue;
+  border-radius: 15px;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 30px;
+  font-size: 30px;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  height: 170px;
+  background-color: white;
+  color: black;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  height: 170px;
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: none;
+  width: 70%;
+  height: 100vh;
+  border-left: none;
+  height: 300px;
+}
+
+.info{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 30vh;
+	background-color: #343a40;
+	color: white;
+	padding: 30px;
+	font-size: 20px;
+}
