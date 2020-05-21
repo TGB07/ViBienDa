@@ -1,5 +1,5 @@
 /*MINIMAPA DE GENERAL STATS VIEW*/
-var map = L.map('map').setView([lat, lon], 10);
+var map = L.map('map').setView([lat, lon], 15);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -15,6 +15,5 @@ for(var i = 0; i<venues.length; i++){
 	venue = venues[i];
 	marker = L.marker([venue.lat, venue.lon])
 		.addTo(map);
-	marker.bindPopup(venue.name)
-		.openPopup();
+	marker.bindPopup(venue.name);
 }

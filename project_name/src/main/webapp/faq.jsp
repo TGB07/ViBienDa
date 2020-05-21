@@ -42,41 +42,61 @@
 				<div class="card">
 					<div class="card-header">
 						<a class="card-link" data-toggle="collapse" href="#collapseOne">
-							PRIMERA PREGUNTA </a>
+							¿QUÉ ES VIBIENDA? </a>
 					</div>
 					<div id="collapseOne" class="collapse show"
 						data-parent="#accordion">
-						<div class="card-body">Lorem ipsum dolor sit amet,
-							consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-							nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-							commodo consequat.</div>
+						<div class="card-body">ViBienDa es un proyecto web que integra varias API
+						a modo de mash-up. El objetivo es facilitar a los usuarios la información que
+						propocionan los distintos servicios que integra nuestra app. Vibienda integra
+						toda la información necesaria sobre lugares: índices de crimen, lugares cercanos,
+						noticias...</div>
 					</div>
 				</div>
 				<div class="card">
 					<div class="card-header">
 						<a class="collapsed card-link" data-toggle="collapse"
-							href="#collapseTwo"> SEGUNDA PREGUNTA </a>
+							href="#collapseTwo"> ¿A QUIÉN VA DIRIGIDO? </a>
 					</div>
 					<div id="collapseTwo" class="collapse" data-parent="#accordion">
-						<div class="card-body">Lorem ipsum dolor sit amet,
-							consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-							nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-							commodo consequat.</div>
+						<div class="card-body">ViBienda va dirigido a usuarios que buscan viajar a distintos lugares
+						del mundo. El usuario podrá mirar estadísticas sobre los datos que incorpora la aplicación, ver
+						gráficos, navegar en búsqueda de noticias y utilizar mapas interactivos.</div>
 					</div>
 				</div>
 				<div class="card">
 					<div class="card-header">
 						<a class="collapsed card-link" data-toggle="collapse"
-							href="#collapseThree"> TERCERA PREGUNTA </a>
+							href="#collapseThree"> ¿QUÉ ES UNA API? </a>
 					</div>
 					<div id="collapseThree" class="collapse" data-parent="#accordion">
-						<div class="card-body">Lorem ipsum dolor sit amet,
-							consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-							nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-							commodo consequat.</div>
+						<div class="card-body">Una API representa la capacidad de comunicación entre componentes de software.
+						Se trata del conjunto de llamadas a ciertas bibliotecas que ofrecen acceso a ciertos servicios desde
+						los procesos y representa un método para conseguir abstracción en la programación, generalmente 
+						(aunque no necesariamente) entre los niveles o capas inferiores y los superiores del software. Uno de
+						los principales propósitos de una API consiste en proporcionar un conjunto de funciones de uso general,
+						por ejemplo, para dibujar ventanas o iconos en la pantalla. De esta forma, los programadores se benefician
+						de las ventajas del API haciendo uso de su funcionalidad, evitándose el trabajo de programar 
+						todo desde el principio. Las API asimismo son abstractas: el software que proporciona una cierta API
+						generalmente es llamado la implementación de esa API..</div>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="card-header">
+						<a class="collapsed card-link" data-toggle="collapse"
+							href="#collapseFour"> ¿CÓMO OBTENEMOS LOS DATOS? </a>
+					</div>
+					<div id="collapseFour" class="collapse" data-parent="#accordion">
+						<div class="card-body">Los datos son obtenidos a través llamadas a las APIs que integra
+						nuestra aplicación web. Los datos son procesados y mostrados a los usuarios internamente
+						en nuestra aplicación. Las API que se utilizan son:
+						<p> - Foursquare</p>
+						<p> - CrimeoMeter</p>
+						<p> - OpenCage</p>
+						<p> - NewsAPI</p>
+						<p>También se utilizan librerías como Leaflet y GoogleCharts para presentar los datos.</p>
+						</div>
 					</div>
 				</div>
 			</div>

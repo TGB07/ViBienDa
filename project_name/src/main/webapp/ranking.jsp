@@ -37,7 +37,7 @@
 						<option value="CA">California</option>
 						<option value="CO">Colorado</option>
 						<option value="WA">Washington</option>
-					</datalist> <input type="submit" value="Buscar">
+					</datalist> <input type="submit" value="Buscar" disabled>
 				</form>			
 		  	</div>
 			<div id = "btn" class="btn" onclick="toggleNav(this)">

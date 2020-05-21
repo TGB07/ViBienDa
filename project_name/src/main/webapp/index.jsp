@@ -40,27 +40,6 @@
 				</form>
 			</div>		
 		</div>
-		
-		<!-- QUE ES VIBIENDA -->
-		<div class="queEs">
-			<div class="top-half">
-				<h1>Qué es ViBienDa</h1>
-			</div>
-			<div class="bottom-half">
-				<p>Lorem Ipsum</p>
-			</div>
-		</div>
-		
-		<!-- SOBRE NOSOTROS -->
-		<div class="aboutUs">
-			<div class="top-half">
-				<h1>Sobre nosotros</h1>
-				<p>Lorem Ipsum</p>
-			</div>
-			<div class="bottom-half">
-				<p>Lorem ipsum</p>
-			</div>
-		</div>
 
 	</div>	
 		
