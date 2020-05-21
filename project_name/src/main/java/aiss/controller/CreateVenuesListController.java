@@ -43,8 +43,8 @@ public class CreateVenuesListController extends HttpServlet {
 			boolean result= fsResource.createList(accessToken, name, descripcion);
 			
 			request.setAttribute("createUserList", result);
-			
-			request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);
+						
+			request.getRequestDispatcher("/GetAllUserListsController").forward(request, response);
 		}
 		else {
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");

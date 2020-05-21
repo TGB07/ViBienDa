@@ -9,14 +9,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- NavBar import -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <title>UserVenuesStatsView</title>
 </head>
@@ -52,60 +56,34 @@
 								<div class="panel-info">
 									<p>
 										Descripcion:
-										<c:out value="${lista.value[0]}" />
+										<c:out value="${lista.value[1]}" />
 									</p>
 									<p>
 										Numero de seguidores:
-										<c:out value="${lista.value[1]}" />
+										<c:out value="${lista.value[2]}" />
 									</p>
+
+									<p>Lugares:</p>
+									<ul>
+										<c:forEach items="${lista.value[3]}" var="venue" varStatus="i">
+											<li>
+												<p>
+													Nombre:
+													<c:out value="${venue.name}" />
+												</p>
+
+												<form action="DeleteVenueFromListController" method="POST">
+													<input type="hidden" name="listId"
+														value="${lista.value[0]}"> <input type="hidden"
+														name="venueId" value="${venue.id}">
+													<button type="submit" class="deleteButton">Eliminar</button>
+												</form>
+
+											</li>
+										</c:forEach>
+									</ul>
+
 								</div>
-
-								<!-- Popup -->
-								<div class="modad popup">
-
-									<button type="button" class="btn btn-info btn-lg"
-										data-toggle="modal" data-target="#myModal">Ver lugares</button>
-
-									<!-- Contenido -->
-									<div class="modal fade" id="myModal" role="dialog">
-										<div class="modal-dialog">
-
-											<!-- Contenido popup -->
-											<div class="modal-content">
-												<!-- Titulo popup -->
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title"><c:out value="${lista.key}" /></h4>
-												</div>
-												<!-- Fin titulo -->
-												
-												<!-- Cuerpo -->
-												<div class="modal-body">
-												
-													<c:forEach items="${lista.value[2]}" var="venue">
-														<div>
-															<p>Nombre:<c:out value="${venue.name}" /></p>
-															<p>Rating:<c:out value="${venue.rating}" /></p>
-															<p>¿Has estado aqui?<c:out value="${venue.beenHere}" /></p>
-														</div>
-													</c:forEach>
-												
-												</div>
-												<!-- Fin cuerpo -->
-												
-												<div class="modal-footer">
-													<button type="button" class="btn btn-default"
-														data-dismiss="modal">Volver</button>
-												</div>
-												
-											</div>
-											<!-- Fin contenido popup -->
-										</div>
-									</div>
-									<!-- Fin contenido -->
-									
-								</div>
-								<!-- Fin popup -->
 
 							</div>
 						</div>
@@ -114,6 +92,58 @@
 				</c:forEach>
 				<!--  -->
 			</div>
+
+			<div class="addList">
+
+				<div class="modad popup">
+
+					<button type="button" class="btn btn-info btn-lg"
+						data-toggle="modal" data-target="#myModal">Añadir lista</button>
+
+					<!-- Contenido -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Contenido popup -->
+							<div class="modal-content">
+								<!-- Titulo popup -->
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">
+										Introduzca la informacion de la lista a crear:
+									</h4>
+								</div>
+								<!-- Fin titulo -->
+
+								<!-- Cuerpo -->
+								<div class="modal-body">
+									<form class="addListForm" action="/CreateVenuesListController?code=<c:out value="${code}"/>#=" method="POST">
+										<label for="lName">Nombre de la lista:</label><br>
+										<input type="text" id="name" name="name" placeholder="Introduzca el nombre.."><br>
+										<label for="lDescription">Descripcion de la lista:</label><br>
+										<textarea name="descripcion" rows="5" columns="30" placeholder="Introduzca la descripcion-.."></textarea><br>
+										<button type="submit" class="addListButton">Añadir</button>
+									</form>
+								</div>
+								<!-- Fin cuerpo -->
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Volver</button>
+								</div>
+
+							</div>
+							<!-- Fin contenido popup -->
+
+
+						</div>
+					</div>
+					<!-- Fin contenido -->
+
+				</div>
+
+			</div>
+
 		</div>
 
 	</div>
