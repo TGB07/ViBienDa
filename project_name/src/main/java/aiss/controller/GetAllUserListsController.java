@@ -51,7 +51,7 @@ public class GetAllUserListsController extends HttpServlet {
 			
 			String accessToken = fsAcessToken.getAccessToken();
 			request.setAttribute("accessToken", accessToken);
-						
+			
 			log.log(Level.FINE, "AccessToken retrieved " + accessToken);
 					
 			FoursquareList fl = fsResource.getUserLists(accessToken);
@@ -75,7 +75,7 @@ public class GetAllUserListsController extends HttpServlet {
 				
 				List<Venue> venues = new ArrayList<Venue>(); 
 				
-				for (int j = 0; j < venues.size(); j++) {
+				for (int j = 0; j < listaDeItems.size(); j++) {
 					venues.add(listaDeItems.get(j).getVenue());
 				}
 				
@@ -94,7 +94,6 @@ public class GetAllUserListsController extends HttpServlet {
 					m.put(name, s);
 				}
 			}
-			
 			request.setAttribute("listasLugares", m);
 			
 //			for (int i = 0; i < listaDelUsuario.size(); i++) {

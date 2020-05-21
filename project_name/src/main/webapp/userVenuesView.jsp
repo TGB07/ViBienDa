@@ -77,21 +77,18 @@
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
 													<h4 class="modal-title"><c:out value="${lista.key}" /></h4>
 												</div>
+												<!-- Fin titulo -->
 												
-												<c:forEach items="${lista.value[2]}" var="venue">
+												<!-- Cuerpo -->
+												<div class="modal-body">
+												
+													<c:forEach items="${lista.value[2]}" var="venue">
 														<div>
 															<p>Nombre:<c:out value="${venue.name}" /></p>
 															<p>Rating:<c:out value="${venue.rating}" /></p>
 															<p>¿Has estado aqui?<c:out value="${venue.beenHere}" /></p>
 														</div>
 													</c:forEach>
-												
-												<!-- Fin titulo -->
-												
-												<!-- Cuerpo -->
-												<div class="modal-body">
-												
-													
 												
 												</div>
 												<!-- Fin cuerpo -->
