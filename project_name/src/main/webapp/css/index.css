@@ -29,6 +29,7 @@ PANTALLA PRINCIPAL
 	grid-area: title;
 	position: relative;
 	height: 100vh;
+	min-height: 720px;
 	width: 100%;
 	
 	display: flex;
