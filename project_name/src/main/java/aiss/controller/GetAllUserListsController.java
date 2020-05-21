@@ -39,7 +39,7 @@ public class GetAllUserListsController extends HttpServlet {
 		
 		request.setAttribute("code", code);
 		
-		if(code!=null) {
+		if(code!=null || "".equals(code)) {
 			
 			FoursquareResource fsResource = new FoursquareResource();
 			FoursquareToken fsAcessToken= fsResource.getFoursquareAccessToken(code);
