@@ -59,4 +59,46 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+ 
+  <!--   Foursquare oAuth2 servlets    -->
+    <!-- FoursquareeAuthController-->
+    
+ <!--    
+    <servlet>
+        <description/>
+        <servlet-name>FoursquareAuthController</servlet-name>
+        <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+        <init-param>
+            <param-name>provider</param-name>
+            <param-value>Foursquare</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FoursquareAuthController</servlet-name>
+        <url-pattern>/AuthController/Foursquare</url-pattern>
+    </servlet-mapping> 
+   -->
+    
+    <!--FoursquareOAuth2Callback-->
+ <!--   
+    <servlet>
+        <description/>
+        <servlet-name>FoursquareOAuth2Callback</servlet-name>
+        <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+        <init-param>
+            <param-name>provider</param-name>
+            <param-value>Foursquare</param-value>
+        </init-param>
+        <init-param>
+            <param-name>onSuccess</param-name>
+            <param-value>redirect:/foursquareUserListT</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FoursquareOAuth2Callback</servlet-name>
+        <url-pattern>/oauth2callback/Foursquare</url-pattern> 
+    </servlet-mapping>
+ -->
 </web-app>

@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,7 @@ import aiss.model.foursquare.FoursquareToken;
 import aiss.model.foursquare.list.FoursquareList;
 import aiss.model.foursquare.list.Item_;
 import aiss.model.foursquare.list.Photo_;
+import aiss.model.foursquare.listD.Venue;
 import aiss.model.resources.FoursquareResource;
 
 public class GetAllUserListsController extends HttpServlet {
@@ -59,23 +61,36 @@ public class GetAllUserListsController extends HttpServlet {
 			List<aiss.model.foursquare.listD.List> detallesListaUsuario = new ArrayList<aiss.model.foursquare.listD.List>();
 			
 			//	[nombre | descripcion, followers, photo, venues]
-			Map<String, Set<Object>> m = new HashMap<String, Set<Object>>();
+			Map<String, List<Object>> m = new HashMap<String, List<Object>>();
 			for(int i = 0; i<listaDelUsuario.size(); i++) {
 				Item_ lista = listaDelUsuario.get(i);
 				String id = lista.getId();
 				String name = lista.getName();
 				Photo_ photo = lista.getPhoto(); 
 				
+				aiss.model.foursquare.listD.List detalles = fsResource.getVenuesList(accessToken, id).getResponse().getList();
+				String description = detalles.getDescription();
+				Integer followers = detalles.getFollowers().getCount();
+				List<aiss.model.foursquare.listD.Item_> listaDeItems = detalles.getListItems().getItems();
+				
+				List<Venue> venues = new ArrayList<Venue>(); 
+				
+				for (int j = 0; j < venues.size(); j++) {
+					venues.add(listaDeItems.get(j).getVenue());
+				}
+				
+				List<Object> s = new ArrayList<Object>();
+				s.add(description);
+				s.add(followers);
+				s.add(venues);
+								
 				if(!m.containsKey(name)) {
-					aiss.model.foursquare.listD.List detalles = fsResource.getVenuesList(accessToken, id).getResponse().getList();
-					String description = detalles.getDescription();
-					Integer followers = detalles.getFollowers().getCount();
-					List<aiss.model.foursquare.listD.Item_> venues = detalles.getListItems().getItems();
-					
-					Set<Object> s = new HashSet<Object>();
-					s.add(description);
-					s.add(followers);
-					s.add(venues);
+					m.put(name, s);
+				}
+				
+				else {
+					List<Object> l =m.get(name);
+					l.add(s);
 					m.put(name, s);
 				}
 			}

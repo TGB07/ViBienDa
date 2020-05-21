@@ -104,7 +104,18 @@
 			<div class=foursquareLogin>
 				<span class=img><img src='./img/foursquare-logo.png' alt='fs logo'></span>
 				<span class=texto>Inicia sesión con FourSquare para más ventajas!</span>
-				<span class=loginBtn><button class=btn onclick='location.href="https://foursquare.com/oauth2/authenticate?client_id=HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC&response_type=code&redirect_uri=http://localhost:8090/GetAllUserListsController"'>LOGIN</button></span>
+				
+				<c:if test="${empty code}">
+					<span class=loginBtn><button class=btn onclick='location.href="https://foursquare.com/oauth2/authenticate?client_id=HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC&response_type=code&redirect_uri=http://localhost:8090/GetAllUserListsController"'>LOGIN</button></span>
+				</c:if>
+				
+				<c:if test="${not empty code}">
+				
+					<span class=loginBtn>Ir a mis listas</span>
+				
+				</c:if>
+				
+				
 			</div>
 		</div>
 		
