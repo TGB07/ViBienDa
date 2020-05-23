@@ -121,8 +121,10 @@
 				
 					<form action="GetAllUserListsController" method="post">
 						<input type="hidden" name="code" value="${code}">
-						<span class=loginBtn><button class=btn>Ir a mis listas</button></span>
+						<input type = "submit" id=goToLists style="visibility: hidden;">
 					</form>
+					<span class=loginBtn><button class=btn onclick="document.getElementById('goToLists').click()">Ir a mis listas</button></span>
+					
 					
 				</c:if>
 				
