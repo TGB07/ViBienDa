@@ -49,6 +49,7 @@
 			<!-- NOMBRE POR EL QUE SE REALIZA LA BUSQUEDA -->
 			<h1>
 				<c:out value="${param.bar}"/>
+				<c:out value="${nombreLL}" />
 			</h1>
 			<!-- Parte de estadisticas de crimeness -->
 
@@ -167,8 +168,6 @@
 		</script>
 
 	</div>
-	<!--  EN CASO DE BUSCAR POR MAPA EL NOMBRE SE PRINTA ASI -->
-	<span><c:out value="${nombreLL}" /></span>
 
 	<br>
 	<script type="text/javascript" src="./js/venuesMiniMap.js"></script>
