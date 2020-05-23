@@ -120,7 +120,8 @@ public class GetAllUserListsController extends HttpServlet {
 				}
 
 				request.setAttribute("listasLugares", m);
-
+				request.getSession().setAttribute("listaLugares", m);
+				
 				// Forward view
 				request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);
 //			}

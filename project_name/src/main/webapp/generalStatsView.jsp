@@ -156,7 +156,14 @@
 			
 			// Añadir a una variable de javascript las listas del usuario (estan en sesion)
 			var listas=[];
-			
+			<c:forEach items="${sessionScope.listaLugares}" var="entry">
+				lista = {
+						name:"${entry.key}",
+						id:"${entry.value[0]}",
+				}
+				console.log(lista);
+				listas.push(lista);
+			</c:forEach>
 		</script>
 
 	</div>
