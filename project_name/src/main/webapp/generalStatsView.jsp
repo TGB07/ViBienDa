@@ -62,7 +62,7 @@
 						
 						<button type=submit class = "incidentButton">	
 							<span> <c:out value="${incidente.key}:" />
-								<div class="w3-gray w3-round-xlarge gris">			
+								<div class="w3-gray w3-round-xlarge gris">		
 									<div class="w3-container w3-green w3-round-xlarge"
 										style="width: ${incidente.value}%">
 										<span class=porcentaje> <c:out value="${incidente.value}" />%
@@ -106,13 +106,21 @@
 				<span class=texto>Inicia sesión con FourSquare para más ventajas!</span>
 				
 				<c:if test="${empty code}">
+					
+					<form action="" method="post">
+						<input type="hidden" name="code" value="${code}">
+					</form>
+				
 					<span class=loginBtn><button class=btn onclick='location.href="https://foursquare.com/oauth2/authenticate?client_id=HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC&response_type=code&redirect_uri=http://localhost:8090/GetAllUserListsController"'>LOGIN</button></span>
 				</c:if>
 				
 				<c:if test="${not empty code}">
 				
-					<span class=loginBtn>Ir a mis listas</span>
-				
+					<form action="GetAllUserListsController" method="post">
+						<input type="hidden" name="code" value="${code}">
+						<span class=loginBtn><button class=btn>Ir a mis listas</button></span>
+					</form>
+					
 				</c:if>
 				
 				
@@ -140,7 +148,10 @@
 				};
 				venues.push(venue);
 			</c:forEach>
-
+			
+			// Añadir a una variable de javascript las listas del usuario (estan en sesion)
+			var listas=[];
+			
 		</script>
 
 	</div>

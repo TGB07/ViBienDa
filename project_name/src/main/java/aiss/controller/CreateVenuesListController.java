@@ -30,9 +30,8 @@ public class CreateVenuesListController extends HttpServlet {
 		
 		if(code != null || "".equals(code)) {	
 			FoursquareResource fsResource = new FoursquareResource();
-			FoursquareToken fsAcessToken= fsResource.getFoursquareAccessToken(code);
+			String accessToken= fsResource.getFoursquareAccessToken(code);
 			
-			String accessToken = fsAcessToken.getAccessToken();
 			request.setAttribute("accessToken", accessToken);
 			
 			log.log(Level.FINE, "AccessToken retrieved " + accessToken);

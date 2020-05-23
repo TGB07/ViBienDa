@@ -39,22 +39,26 @@ public class FoursquareResource {
 		return recommendedVenues;
 	}
 	
-	public FoursquareToken getFoursquareAccessToken(String code) throws UnsupportedEncodingException {
+	public String getFoursquareAccessToken(String code) throws UnsupportedEncodingException {
 		//PARA OBTENER EL ACCESS TOKEN A PARTIR DEL CODIGO OBTENIDO TRAS ACEPTAR EL USUARIO LOS PERMISOS
 		ClientResource cr = null;
-		FoursquareToken accessToken = null;
+//		FoursquareToken accessToken = null;
 				
 		String uri = "https://foursquare.com/oauth2/access_token?client_id=" + Foursquare_Client_Id + "&client_secret=" + Foursquare_Client_Secret + "&grant_type=authorization_code&redirect_uri=" + CALLBACK_URI + "&code=" + code;
 		log.log(Level.FINE, "FoursquareAccessToken URI: " + uri);
 		
+		String result="";
+		
 		try {
 			cr = new ClientResource(uri);
-			accessToken= cr.get(FoursquareToken.class);
+			cr.setEntityBuffering(true);
+			result= cr.post("",FoursquareToken.class).getAccessToken();
+//			accessToken= cr.get(FoursquareToken.class);
 		}
 		catch (ResourceException re) {
 			System.err.println("Error when retrieving the accessToken" + cr.getResponse().getStatus());
 		}
-		return accessToken;
+		return result;
 	}
 	
 	public FoursquareList getUserLists(String token) throws UnsupportedEncodingException{
