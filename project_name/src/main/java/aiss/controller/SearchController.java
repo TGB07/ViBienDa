@@ -65,11 +65,19 @@ public class SearchController extends HttpServlet {
 
 			LLNameSearch LLtoName = ocResource.getNombreLL(lat, lon);
 
-			String nombreLL = LLtoName.getResults().get(0).getComponents().getCounty().replace("County", "");
+			if (LLtoName.getResults()!=null && LLtoName.getResults().size()>=1) {
+				String nombreLL = LLtoName.getResults().get(0).getComponents().getCounty().replace("County", "");
+				request.setAttribute("lat", lat);
+				request.setAttribute("lon", lon);
+				request.setAttribute("nombreLL", nombreLL);
+			}
+			
+			else {
+				log.log(Level.INFO, "LUGAR NO DISPONIBLE");
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+			}
 
-			request.setAttribute("lat", lat);
-			request.setAttribute("lon", lon);
-			request.setAttribute("nombreLL", nombreLL);
+			
 
 		} else {
 			// Se ha realizado el request a traves de la barra de busqueda
