@@ -14,8 +14,12 @@ import aiss.model.foursquare.listD.FoursquareListDetails;
 
 public class FoursquareResource {
 	
-	private static final String Foursquare_Client_Id = "HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC";
-	private static final String Foursquare_Client_Secret = "JR3ENW0XR5FAURWCPLZS5INDLFPB4IYOWYDNUXL0AXRWEGVT";
+	//ID CUENTA PRINCIPAL MAIN NO BORRAR
+//	private static final String Foursquare_Client_Id = "HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC";
+//	private static final String Foursquare_Client_Secret = "JR3ENW0XR5FAURWCPLZS5INDLFPB4IYOWYDNUXL0AXRWEGVT";
+	
+	private static final String Foursquare_Client_Id = "YRUTVRBHN10TPG4FAI5HJ1PLV4VIFBL10TSFWT13DAWA4KBD";
+	private static final String Foursquare_Client_Secret = "FQIHWAEF3FXIXIBY1JHRB2ZRV1LISTUXSTYMQNUMHP4B1M55";
 	private static final String CALLBACK_URI = "http://localhost:8090/GetAllUserListsController";
 
 	private static final Logger log = Logger.getLogger(FoursquareResource.class.getName());

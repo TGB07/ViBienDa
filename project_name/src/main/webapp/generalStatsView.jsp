@@ -111,7 +111,10 @@
 						<input type="hidden" name="code" value="${code}">
 					</form>
 				
-					<span class=loginBtn><button class=btn onclick='location.href="https://foursquare.com/oauth2/authenticate?client_id=HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC&response_type=code&redirect_uri=http://localhost:8090/GetAllUserListsController"'>LOGIN</button></span>
+				<!--  LINEA COMENTADA ES LA DE LA CUENTA MAIN! -->
+				<!-- <span class=loginBtn><button class=btn onclick='location.href="https://foursquare.com/oauth2/authenticate?client_id=HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC&response_type=code&redirect_uri=http://localhost:8090/GetAllUserListsController"'>LOGIN</button></span>   -->
+				<span class=loginBtn><button class=btn onclick='location.href="https://foursquare.com/oauth2/authenticate?client_id=YRUTVRBHN10TPG4FAI5HJ1PLV4VIFBL10TSFWT13DAWA4KBD&response_type=code&redirect_uri=http://localhost:8090/GetAllUserListsController"'>LOGIN</button></span>
+				
 				</c:if>
 				
 				<c:if test="${not empty code}">
