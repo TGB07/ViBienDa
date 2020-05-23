@@ -1,0 +1,47 @@
+body *{
+  font-family: "Lato", sans-serif;
+}
+
+.errorImg img{
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
+}
+.mensajeError *{
+	position: absolute;
+	width:56%;
+	text-align: center;
+	left:50%;
+	margin-left:-23%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.mensajeError h1{
+	bottom: 70%;
+	font-size: 60px;
+	font-weight: 600;
+}
+.mensajeError p{
+	font-size: 25px;
+	top: 35%;
+}
+.mensajeError button{
+	top: 50%;
+	width: 20%;
+	margin-left:-5%;
+	border-radius: 50px;
+	height: 50px;
+	color:white;
+	font-size: 20px;
+	background-color: #5bc0de;
+	border: none;
+	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.mensajeError button:hover{
+	background-color: #4B9DB6;
+	border-color: #4B9DB6;
+}

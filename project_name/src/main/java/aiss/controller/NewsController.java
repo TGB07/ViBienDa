@@ -67,7 +67,7 @@ public class NewsController extends HttpServlet {
 		NewsSearch newsResponse = newsResource.getNewsSearch(localizacion, tematica, orden);
 		//	Hay que ver que conviene mas pasar como keyword en titulo o en general
 		
-		if(newsResponse.getTotalResults()==0) {
+		if(newsResponse==null) {
 			log.log(Level.INFO, "No news available at the given location");
 			//	Se deja constancia en el log, pero es en el jsp donde tenemos que indicar que no se han encontrado noticias
 			//	mirando el tamaño de la lista de articulos que pasamos abajo en el jsp

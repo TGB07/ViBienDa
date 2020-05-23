@@ -10,6 +10,8 @@
 		
 	<!-- NavBar import -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<!-- CSS -->
+	<link rel="stylesheet" href="./css/error.css">
 </head>
 
 
@@ -18,12 +20,21 @@
 		<!-- NAV-BAR -->
 		<jsp:include page="navbar.html"/>
 		
-		<div class=error>
-			<img class="imagenError" alt="Error imagen" src="">
+		<div class=errorImg>
+			<img class="imagenError" alt="Error imagen" src="/img/skyline.png">
 		</div>
 		
 		<div class=mensajeError>
-			<p>Algo no funciona. Vuelve a la página principal.</p>
+			<h1>Algo ha salido mal :(</h1>
+			<p><%
+				switch(request.getAttribute("errorType").toString()){
+				case "LLERROR": out.println("No ha sido posible localizar el lugar indicado");break;
+				case "NEWSERROR": out.println("No hay noticias");break;
+				case "TOKENERROR": out.println("No puedes acceder a esta función sin iniciar sesión");break;
+				default: out.println("Error desconocido");break;
+				}
+			%></p>
+			<button class=volver onclick="location.href='index.jsp'">Volver al inicio</button>
 		</div>
 	
 	</div>
