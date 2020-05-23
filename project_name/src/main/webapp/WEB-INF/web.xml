@@ -48,14 +48,7 @@
     <servlet-name>AddVenueToListController</servlet-name>
     <url-pattern>/AddVenueToListController</url-pattern>
   </servlet-mapping>
-   <servlet>
-    <servlet-name>DeleteVenueFromListController</servlet-name>
-    <servlet-class>aiss.controller.DeleteVenueFromListController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeleteVenueFromListController</servlet-name>
-    <url-pattern>/DeleteVenueFromListController</url-pattern>
-  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

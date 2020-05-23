@@ -74,7 +74,9 @@ public class SearchController extends HttpServlet {
 
 			else {
 				log.log(Level.INFO, "LUGAR NO DISPONIBLE");
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				
+				request.setAttribute("errorType", "LLERROR");
+				request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
 
 		} else {
@@ -94,6 +96,7 @@ public class SearchController extends HttpServlet {
 			} else {
 				log.log(Level.WARNING, "No coordinates for the given location");
 
+				request.setAttribute("errorType", "LLERROR");
 				// Redirigimos a la pagina de error ya que este atributo es necesario
 				request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
@@ -172,10 +175,10 @@ public class SearchController extends HttpServlet {
 
 		}
 		
-		else {
-			log.log(Level.INFO, "No places found for this location");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
-		}
+//		else {
+//			log.log(Level.INFO, "No places found for this location");
+//			request.getRequestDispatcher("/index.jsp").forward(request, response);
+//		}
 
 		// Forward view
 		request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);

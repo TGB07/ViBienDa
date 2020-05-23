@@ -71,7 +71,11 @@ public class NewsController extends HttpServlet {
 			log.log(Level.INFO, "No news available at the given location");
 			//	Se deja constancia en el log, pero es en el jsp donde tenemos que indicar que no se han encontrado noticias
 			//	mirando el tamaño de la lista de articulos que pasamos abajo en el jsp
+			request.setAttribute("errorType", "NEWSERROR");
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
+		
+		else {
 		
 		List<Article> articulos = newsResponse.getArticles();
 		/*	De los articulos nos puede interesar:
@@ -88,7 +92,7 @@ public class NewsController extends HttpServlet {
 			
 		// Forward view
 		request.getRequestDispatcher("/newsView.jsp").forward(request, response);	
-
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

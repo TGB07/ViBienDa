@@ -71,7 +71,8 @@ public class GetAllUserListsController extends HttpServlet {
 
 			if (fl == null) {
 				log.log(Level.WARNING, "ERROR RETRIEVING USERS LIST. RETURNING TO INDEX");
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				request.setAttribute("errorType", "TOKENERROR");
+				request.getRequestDispatcher("GetAllUserListsController").forward(request, response);
 			}
 
 			else {
@@ -130,7 +131,8 @@ public class GetAllUserListsController extends HttpServlet {
 			}
 		} else {
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.setAttribute("errorType", "TOKENERROR");
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
 
