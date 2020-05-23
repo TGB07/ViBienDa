@@ -35,6 +35,10 @@
 		opacity: .5;
 	}
 </style>
+
+<!-- CSS -->
+<link rel="stylesheet"
+	href="./css/userVenuesView.css">
     
 <title>UserVenuesStatsView</title>
 </head>
@@ -48,7 +52,6 @@
 		<!-- Listas del usuario -->
 		<div class="container">
 			<h2>Mis listas de lugares favoritos:</h2>
-			<h2>NOMBRE DEL USUARIO</h2>
 			<p>Seleccione la lista de la que desea obtener sus lugares
 				guardados.</p>
 
@@ -83,13 +86,12 @@
 										<c:forEach items="${lista.value[3]}" var="venue" varStatus="i">
 											<li>
 												<p>
-													Nombre:
 													<c:out value="${venue.name}" />
 												</p>
 											</li>
 										</c:forEach>
 									</ul>
-
+									<a class = mapLink href=/searchMapView.jsp>Ir al mapa para añadir más lugares</a>
 								</div>
 
 							</div>
@@ -128,7 +130,7 @@
 										<label for="lName">Nombre de la lista:</label><br>
 										<input type="text" id="name" name="name" placeholder="Introduzca el nombre.."><br>
 										<label for="lDescription">Descripcion de la lista:</label><br>
-										<textarea name="descripcion" rows="5" columns="30" placeholder="Introduzca la descripcion-.."></textarea><br>
+										<textarea name="descripcion" rows="5" columns="30" placeholder="Introduzca la descripcion.."></textarea><br>
 										<button type="submit" class="addListButton">Añadir</button>
 									</form>
 								</div>

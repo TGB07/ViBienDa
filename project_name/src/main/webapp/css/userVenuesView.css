@@ -1,0 +1,49 @@
+.modal-header h4{
+	opacity: 0.5;
+	width: 100%;
+	left: 25px;
+	font-size: 20px;
+}
+.modal-header button.close{
+	position: absolute;
+	right: 20px;
+	display: block;
+	font-size: 30px;
+	cursor: pointer;
+	padding: 0rem 0rem;
+}
+.modal-body label{
+	opacity: 0.6;
+}
+.modal-body input[type=text]{
+	border-radius: 20px;
+	border: 1px solid gray;
+	width: 100%;
+	padding-left: 15px;
+	margin-bottom: 15px;
+}
+.modal-body textarea::placeholder,
+.modal-body input[type=text]::placeholder{
+	opacity: 0.5;
+}
+.modal-body textarea{
+	border-radius: 20px;
+	border: 1px solid gray;
+	width: 100%;
+	padding-left: 15px;
+	resize: none;
+}
+.modal-body button{
+	background-color: #5bc0de;
+	border-radius: 5px;
+	border-color: #5bc0de;
+	padding: 5px 10px;
+	color: white;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.modal-body button:hover{
+	background-color: #4B9DB6;
+	border-color: #4B9DB6;
+}
