@@ -8,20 +8,34 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link rel="stylesheet" 
+	href="https://www.w3schools.com/w3css/4/w3.css">
+	
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 <!-- NavBar import -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+<!-- ACCORDION/POPUP -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
+<script 
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<script 
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	
+<!-- fondo gris del popup -->
+<style>
+	.modal-backdrop.show{
+		opacity: .5;
+	}
+</style>
+    
 <title>UserVenuesStatsView</title>
 </head>
 
@@ -43,15 +57,16 @@
 					varStatus="loop">
 					<!--  -->
 					<div class="panel panel-default">
+					
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion"
-									href="#collapse<c:out value="${loop.index}"/>"> <c:out
+								<a data-toggle="collapse" data-parent="#accordion" style="display:block; height: 100%; width: 100%;"
+									href='#collapse<c:out value="${loop.index}"/>'> <c:out
 										value="${lista.key}" />
 								</a>
 							</h4>
 						</div>
-						<div id="collapse1" class="panel-collapse collapse in">
+						<div id="collapse<c:out value="${loop.index}"/>" class="panel-collapse collapse">
 							<div class="panel-body">
 								<div class="panel-info">
 									<p>
@@ -71,14 +86,6 @@
 													Nombre:
 													<c:out value="${venue.name}" />
 												</p>
-
-												<form action="DeleteVenueFromListController" method="POST">
-													<input type="hidden" name="listId"
-														value="${lista.value[0]}"> <input type="hidden"
-														name="venueId" value="${venue.id}">
-													<button type="submit" class="deleteButton">Eliminar</button>
-												</form>
-
 											</li>
 										</c:forEach>
 									</ul>
