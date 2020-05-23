@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.restlet.data.ChallengeResponse;
+import org.restlet.data.ChallengeScheme;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
@@ -57,6 +59,13 @@ public class FoursquareResource {
 			cr = new ClientResource(uri);
 			cr.setEntityBuffering(true);
 			result= cr.post("",FoursquareToken.class).getAccessToken();
+			
+//			ChallengeResponse chr = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);
+//			chr.setRawValue(result);
+//			cr.setChallengeResponse(chr);
+			
+			result = cr.get(FoursquareToken.class).getAccessToken();
+			
 //			accessToken= cr.get(FoursquareToken.class);
 		}
 		catch (ResourceException re) {

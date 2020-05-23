@@ -65,19 +65,17 @@ public class SearchController extends HttpServlet {
 
 			LLNameSearch LLtoName = ocResource.getNombreLL(lat, lon);
 
-			if (LLtoName.getResults()!=null && LLtoName.getResults().size()>=1) {
+			if (LLtoName.getResults() != null && LLtoName.getResults().size() >= 1) {
 				String nombreLL = LLtoName.getResults().get(0).getComponents().getCounty().replace("County", "");
 				request.setAttribute("lat", lat);
 				request.setAttribute("lon", lon);
 				request.setAttribute("nombreLL", nombreLL);
 			}
-			
+
 			else {
 				log.log(Level.INFO, "LUGAR NO DISPONIBLE");
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			}
-
-			
 
 		} else {
 			// Se ha realizado el request a traves de la barra de busqueda
@@ -127,8 +125,8 @@ public class SearchController extends HttpServlet {
 //			}
 //			request.setAttribute("incidentes", incidenteTotal);
 //		}
-		
-		//INCIDENTES PARA PROBAR
+
+		// INCIDENTES PARA PROBAR
 		Map<String, Double> incidenteTotal = new HashMap<String, Double>();
 		incidenteTotal.put("incidente1", 10.2);
 		incidenteTotal.put("incidente2", 20.8);
@@ -141,8 +139,7 @@ public class SearchController extends HttpServlet {
 		incidenteTotal.put("incidente9", 11.5);
 		incidenteTotal.put("incidente10", 19.0);
 		request.setAttribute("incidentes", incidenteTotal);
-		
-		
+
 		// Load recommended venues
 
 		FoursquareResource fsResource = new FoursquareResource();
@@ -150,13 +147,14 @@ public class SearchController extends HttpServlet {
 
 		Venue item = null;
 		List<String> lVenues = new ArrayList<String>();
-		List<Venue> items = fsSearch.getResponse().getVenues();
-		System.out.println(items);
 
-		if (items != null && !items.isEmpty()) {
+		if(fsSearch!=null) {
+			List<Venue> items = fsSearch.getResponse().getVenues();
 
-			request.setAttribute("lVenues", items);
-			
+			if (items != null && !items.isEmpty()) {
+
+				request.setAttribute("lVenues", items);
+
 //			for (int i = 0; i < items.size(); i++) {
 //				item = items.get(i);
 //				if(!item.getCategories().isEmpty()) {
@@ -168,8 +166,15 @@ public class SearchController extends HttpServlet {
 //			}
 //			request.setAttribute("lVenues", lVenues);
 
-		} else {
-			log.log(Level.INFO, "No recommended venues at the given location");
+			} else {
+				log.log(Level.INFO, "No recommended venues at the given location");
+			}
+
+		}
+		
+		else {
+			log.log(Level.INFO, "No places found for this location");
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 
 		// Forward view

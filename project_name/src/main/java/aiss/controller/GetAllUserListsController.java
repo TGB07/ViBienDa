@@ -43,7 +43,7 @@ public class GetAllUserListsController extends HttpServlet {
 		 * code que se genera cuando el usuario acepta los terminos de condiciones y
 		 * uso.
 		 */
-
+		
 		String code = request.getParameter("code");
 
 //		String code = (String) request.getSession().getAttribute("code");
