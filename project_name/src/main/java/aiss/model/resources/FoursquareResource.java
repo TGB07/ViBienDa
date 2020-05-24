@@ -69,7 +69,7 @@ public class FoursquareResource {
 		ClientResource cr = null;
 		FoursquareList fl= null;
 		
-		//PARAMETRO self para usuario actual
+		//	Utilizamos self para referirnos al usuario actual
 		String uri = "https://api.foursquare.com/v2/users/self/lists?oauth_token=" + token + "&group=created" + "&v=20200101";
 		log.log(Level.FINE, "FoursquareGetUserLists URI:" + uri);
 		

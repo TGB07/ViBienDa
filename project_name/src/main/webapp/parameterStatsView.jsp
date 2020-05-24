@@ -36,7 +36,7 @@
 		<div id="Grafico1" class="tabcontent" style = "display:block;">
 		  <div id="chart_div" style="width: 900px; height: 500px;"></div>
 		</div>
-		
+		<!-- GRAFICO 2 -->
 		<div id="Grafico2" class="tabcontent" style = "display:block; visibility:hidden">
     		<div id="piechart_3d" style="width: 900px; height: 500px; display: block;"></div>
 		</div>

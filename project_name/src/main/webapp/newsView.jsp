@@ -9,6 +9,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 	<!-- NavBar import -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">	
 	<link rel="stylesheet" href="./css/newsView.css">
@@ -23,6 +24,7 @@
 		
 		<div class="news-container">
 		<h1 class="heading">Noticias sobre: <%= request.getParameter("tematica") %></h1>
+			<!-- Iteramos sobre las noticias y mostramos sus aspectos mas relevantes -->
 			<c:forEach items="${requestScope.articulos}" var="articulo">
 			<div class=noticia>
 				<span class=titulo><c:out value="${articulo.getTitle()}"/></span><br>

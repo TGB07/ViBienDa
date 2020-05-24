@@ -21,19 +21,10 @@ public class NewsResource {
 
 		ClientResource cr = null;
 		NewsSearch newsSearch=null;
-		
-		//String queryFormatted = URLEncoder.encode(query, "UTF-8");
-		//String uri = "https://newsapi.org/v2/everything?q=" + queryFormatted + "&apiKey=" + NEWS_API_KEY;
-		
+
 		String keywordsEncoded = URLEncoder.encode(keywords, "UTF-8");
 		String keywordsTituloEncoded = URLEncoder.encode(keywords, "UTF-8");
-		/*
-		 * 	Puede que haya que hacer un procesado de los parametros de orden si no se puede establecer
-		 * 	una correspondencia entre la eleccion en el form y los que acepta la request (creo que si se
-		 * 	puede con un multiple, pero no estoy seguro)
-		 * 
-		 */
-		
+
 		String uri = "https://newsapi.org/v2/everything?q=" + keywordsEncoded + "&qInTitle=" + keywordsTituloEncoded + "&sortBy=" + orden + "&apiKey=" + NEWS_API_KEY;
 		
 		log.log(Level.FINE, "NewsAPI URI: " + uri);

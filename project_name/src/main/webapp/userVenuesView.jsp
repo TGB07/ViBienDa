@@ -29,7 +29,7 @@
 <script 
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	
-<!-- fondo gris del popup -->
+<!-- Fondo gris del popup -->
 <style>
 	.modal-backdrop.show{
 		opacity: .5;
@@ -51,16 +51,20 @@
 
 		<!-- Listas del usuario -->
 		<div class="container">
+			<!-- Titulo -->
 			<h2>Mis listas de lugares favoritos:</h2>
 			<p>Seleccione la lista de la que desea obtener sus lugares
 				guardados.</p>
-
+			
+			<!-- Conjunto de desplegables -->
 			<div class="panel-group" id="accordion">
+				
+				<!-- Iteramos sobre las listas de lugares -->
 				<c:forEach items="${requestScope.listasLugares}" var="lista"
 					varStatus="loop">
-					<!--  -->
+					<!-- Desplegable -->
 					<div class="panel panel-default">
-					
+						<!-- Titulo desplegable -->
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" style="display:block; height: 100%; width: 100%;"
@@ -69,6 +73,9 @@
 								</a>
 							</h4>
 						</div>
+						
+						<!-- Contenido desplegable -->
+						<!-- Iteramos sobre los lugares de la lista que estamos iterando -->
 						<div id="collapse<c:out value="${loop.index}"/>" class="panel-collapse collapse">
 							<div class="panel-body">
 								<div class="panel-info">
@@ -91,17 +98,19 @@
 											</li>
 										</c:forEach>
 									</ul>
+									<!-- Enlace al mapa con los lugares recomendados -->
 									<a class = mapLink href=/searchMapView.jsp>Ir al mapa para añadir más lugares</a>
 								</div>
-
 							</div>
 						</div>
+						
 					</div>
-
+					<!-- Fin desplegable -->
 				</c:forEach>
-				<!--  -->
 			</div>
+			<!-- Fin conjunto desplegables -->
 
+			<!-- Boton de añadir lista -->
 			<div class="addList">
 
 				<div class="modad popup">
@@ -143,21 +152,15 @@
 
 							</div>
 							<!-- Fin contenido popup -->
-
-
 						</div>
 					</div>
 					<!-- Fin contenido -->
-
 				</div>
-
 			</div>
-
+			<!-- Fin boton añadir lista -->
 		</div>
 
 	</div>
-
-
 
 </body>
 </html>

@@ -23,28 +23,34 @@ public class CreateVenuesListController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//	Code a recibido a traves de la autenticacion
 		String code = request.getParameter("code");
-		
 		request.setAttribute("code", code);
 		
+		//	Comprobamos la respuesta del code
 		if(code != null || "".equals(code)) {	
-			FoursquareResource fsResource = new FoursquareResource();
-			String accessToken= fsResource.getFoursquareAccessToken(code);
 			
+			FoursquareResource fsResource = new FoursquareResource();
+			//	Peticion del token
+			String accessToken= fsResource.getFoursquareAccessToken(code);
 			request.setAttribute("accessToken", accessToken);
 			
 			log.log(Level.FINE, "AccessToken retrieved " + accessToken);
 			
+			//	Parametros necesarios para crear una lista
 			String name= request.getParameter("name");
 			String descripcion= request.getParameter("descripcion");
 			
+			//	Creamos la lista
 			boolean result= fsResource.createList(accessToken, name, descripcion);
 			
 			request.setAttribute("createUserList", result);
-						
+			
+			//	Redirigimos a la vista de listas del usuario
 			request.getRequestDispatcher("/GetAllUserListsController").forward(request, response);
 		}
 		else {
+			//	Si el code es nulo redirigimos a la autenticacion
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}

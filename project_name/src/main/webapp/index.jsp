@@ -10,6 +10,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
+		<!-- CSS -->
 		<link rel="stylesheet" href="./css/index.css">
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     	
@@ -24,24 +25,25 @@
 		<!-- NAV-BAR -->
 		<jsp:include page="navbar.html"/>
 		
-		<!-- TITLE -->
+		<!-- Contenido central -->
 		<div class="title">	
 			<img src="./img/background1.jpg" alt="logo"></img>
-			<h1>ViBienDa</h1>			
+			<h1>ViBienDa</h1>
+			<!-- Barra de busqueda -->			
 			<div class="searchbar">
 				<form class="search" action="SearchController" method="post">
 					<input name="bar" type="text" placeholder="Introduzca el nombre de una localización" required="required">
 					<button type="submit"><i class="fa fa-arrow-right"></i></button>
 				</form>
 			</div>			
+			<!-- Boton mapa interactivo -->
 			<div class="mapButton">
 				<form action="/searchMapView.jsp" method = post>
 					<input type="submit" value="Mapa interactivo" name="mapBtn">
 				</form>
 			</div>		
+			
 		</div>
-
-	</div>	
-		
+	</div>
 	</body>
 </html>

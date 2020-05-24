@@ -36,62 +36,44 @@ public class NewsController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		/*
-		 * 	Para las noticias necesitamos:
-		 * 		- q: keywords en el titulo y cuerpo de las noticias
-		 * 		- qInTitle:	keywords en el titulo unicamente
-		 * 		- from: tiempo inicio
-		 * 		- to: tiempo fin
-		 * 		- sortBy: {publishedAt, relevancy, popularity}
-		 * 		- page: pagina de la consulta (20 predeterminado, 100 maximo)
+		 * Para las noticias tomamos: - q: keywords en el titulo y cuerpo de las
+		 * noticias - qInTitle: keywords en el titulo unicamente - from: tiempo inicio -
+		 * to: tiempo fin - sortBy: {publishedAt, relevancy, popularity} - page: pagina
+		 * de la consulta (20 predeterminado, 100 maximo)
+		 * 
 		 */
-		
+
 		/*
-		 * 	Reenviamos a traves de un form en generalStatsView.jsp los datos que necesitamos para la request
-		 * 	siendo algunos de estos ocultos
+		 * Obtenemos de generalStatsView.jsp los datos necesarios para la request. No
+		 * tenemos que realizar un checkeo sobre si los parametros son nulos. Obligamos
+		 * en el form a insertar la tematica o la establecemos por defecto a una cadena
+		 * vacia (para que aparezcan todo tipo de noticias) al igual que ponemos un
+		 * orden predeterminado.
 		 */
-		
 		String localizacion = request.getParameter("loc");
 		String tematica = request.getParameter("tematica");
 		String orden = request.getParameter("orden");
-		
+
 		NewsResource newsResource = new NewsResource();
-		/*	No tenemos que realizar un checkeo sobre si los parametros son nulos
-		 * 	ya que obligamos en el form a insertar la tematica o la establecemos
-		 * 	por defecto a una cadena vacia (para que aparezcan todo tipo de noticias)
-		 * 	al igual que ponemos que el orden este predeterminado en uno de los tipos
-		 * 	que esta puesto arriba
-		 */
-		
+		// Realizamos la busqueda de noticias por zona, tematica y orden
 		NewsSearch newsResponse = newsResource.getNewsSearch(localizacion, tematica, orden);
-		//	Hay que ver que conviene mas pasar como keyword en titulo o en general
-		
-		if(newsResponse==null) {
+
+		if (newsResponse == null) {
+			// No suponen un error, dejamos constancia en el log
 			log.log(Level.INFO, "No news available at the given location");
-			//	Se deja constancia en el log, pero es en el jsp donde tenemos que indicar que no se han encontrado noticias
-			//	mirando el tamaño de la lista de articulos que pasamos abajo en el jsp
 			request.setAttribute("errorType", "NEWSERROR");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
-		}
-		
-		else {
-		
-		List<Article> articulos = newsResponse.getArticles();
-		/*	De los articulos nos puede interesar:
-		 * 		- title
-		 * 		- description
-		 * 		x content -> Lo descarto porque con la descripcion tenemos un resumen
-		 * 		- url: Para que el usuario pueda ir a la noticia
-		 * 		- urlToImage: Mostramos la imagen dada en la noticia en pequeño
-		 * 
-		 * 	Le pasaremos al jsp la lista de articulos que procesaremos en este (parece que en el de 4square/crimeometer habeis usado string pero se pueden objetos)
-		 */
-				
-		request.setAttribute("articulos", articulos);
+		} else {
+			//	Obtenemos los articulos asociados a la busqueda
+			List<Article> articulos = newsResponse.getArticles();
 			
-		// Forward view
-		request.getRequestDispatcher("/newsView.jsp").forward(request, response);	
+			//	Añadimos los articulos a la request para procesarlos en la vista
+			request.setAttribute("articulos", articulos);
+
+			// Forward view
+			request.getRequestDispatcher("/newsView.jsp").forward(request, response);
 		}
 	}
 

@@ -24,25 +24,32 @@ public class AddVenueToListController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//	Code necesario para obtener posteriormente el accessToken de OAuth
 		HttpSession session = request.getSession();		
 		String code = (String) session.getAttribute("code");
 		request.setAttribute("code", code);
-				
+		
+		//	Comprobamos la respuesta del code
 		if (code!=null || "".equals(code) ) {
 			
 			FoursquareResource fsResource = new FoursquareResource();
+			//	Peticion del token
 			String accessToken= fsResource.getFoursquareAccessToken(code);
 			request.setAttribute("accessToken", accessToken);
 			
+			//	Parametros necesarios para añadir una venue a una lista
 			String listId= request.getParameter("listId");
 			String venueId= request.getParameter("venueId");
 			
+			//	Añadimos la venue a la lista
 			boolean result = fsResource.addVenue(accessToken, listId, venueId);
 	
 			request.setAttribute("addVenueToList", result);
 			
+			//	Redirigimos a la vista de listas del usuario
 			request.getRequestDispatcher("/GetAllUserListsController").forward(request, response);
 		} else {
+			//	Si el code es nulo redirigimos a la autenticacion
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
 			response.sendRedirect("https://foursquare.com/oauth2/authenticate?client_id=YRUTVRBHN10TPG4FAI5HJ1PLV4VIFBL10TSFWT13DAWA4KBD&response_type=code&redirect_uri=http://localhost:8090/GetAllUserListsController");
 		}

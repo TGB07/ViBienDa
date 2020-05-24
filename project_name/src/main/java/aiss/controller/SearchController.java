@@ -51,9 +51,13 @@ public class SearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// Parametro de busqueda
+
+		// Cadena insertada en la barra de busqueda
 		String barQuery = request.getParameter("bar");
 		OpenCageResource ocResource = new OpenCageResource();
 
+		// Parametros de la busqueda (lat, lon, radio)
 		Double lat = null, lon = null;
 		Double radio = 10.;
 		if (barQuery == null) {
@@ -63,19 +67,23 @@ public class SearchController extends HttpServlet {
 			lon = Double.parseDouble(request.getParameter("lon"));
 			radio = Double.parseDouble(request.getParameter("radio"));
 
+			// Obtenemos el nombre a partir de las coordenadas
 			LLNameSearch LLtoName = ocResource.getNombreLL(lat, lon);
 
 			if (LLtoName.getResults() != null && LLtoName.getResults().size() >= 1) {
 				String nombreLL = LLtoName.getResults().get(0).getComponents().getCounty().replace("County", "");
+
+				// Añadimos los parametros de busqueda para usos posteriores
 				request.setAttribute("lat", lat);
 				request.setAttribute("lon", lon);
 				request.setAttribute("nombreLL", nombreLL);
-			}
 
-			else {
+			} else {
+				// Informamos del error
 				log.log(Level.INFO, "LUGAR NO DISPONIBLE");
-				
+				// Establecemos el tipo de error
 				request.setAttribute("errorType", "LLERROR");
+				// Redirigimos a la vista de error
 				request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
 
@@ -88,6 +96,7 @@ public class SearchController extends HttpServlet {
 			List<Result> results = ocrResponse.getResults();
 
 			if (results != null && !results.isEmpty()) {
+				// Obtenemos los valores de los parametros
 				Geometry g = results.get(0).getGeometry();
 				lat = g.getLat();
 				lon = g.getLng();
@@ -105,16 +114,19 @@ public class SearchController extends HttpServlet {
 ////		Load crime data
 //		CrimeometerResource coResource = new CrimeometerResource();
 //
+//		//	Crimenes a partir de las coordenadas		
 //		CrimeStatsLLSearch coResponse = coResource.getCrimeStatsLL(lat, lon);
 //
 //		Integer totalDelitos = coResponse.getTotalIncidents();
-//
+//		
+//		//	Procesamos los datos para obtener un resumen de los mismos
 //		Map<String, Double> incidenteTotal = new HashMap<String, Double>();
 //
 //		if (totalDelitos == 0) {
+//			//	Informamos de que no existen datos para la localizacion
 //			log.log(Level.INFO, "No crime data at the given location");
 //		} else {
-//
+//			//	Contamos el numero de incidentes de cada tipo
 //			List<ReportType> reportes = coResponse.getReportTypes();
 //
 //			for (ReportType r : reportes) {
@@ -122,7 +134,6 @@ public class SearchController extends HttpServlet {
 //			}
 //
 //			// Calculamos los porcentajes asociados a los distintos tipos de delitos
-//
 //			for (Map.Entry<String, Double> entry : incidenteTotal.entrySet()) {
 //				incidenteTotal.put(entry.getKey(), (entry.getValue().doubleValue() / totalDelitos) * 100);
 //			}
@@ -151,34 +162,16 @@ public class SearchController extends HttpServlet {
 		Venue item = null;
 		List<String> lVenues = new ArrayList<String>();
 
-		if(fsSearch!=null) {
+		if (fsSearch != null) {
+			//	Guardamos la lista de lugares recomendados
 			List<Venue> items = fsSearch.getResponse().getVenues();
 
 			if (items != null && !items.isEmpty()) {
-
 				request.setAttribute("lVenues", items);
-
-//			for (int i = 0; i < items.size(); i++) {
-//				item = items.get(i);
-//				if(!item.getCategories().isEmpty()) {
-//					lVenues.add(item.getName() + " --> Categoria: " + item.getCategories().get(0).getName());
-//				}
-//				else {
-//					lVenues.add(item.getName() + " --> No Category for that place");
-//				}
-//			}
-//			request.setAttribute("lVenues", lVenues);
-
 			} else {
 				log.log(Level.INFO, "No recommended venues at the given location");
 			}
-
 		}
-		
-//		else {
-//			log.log(Level.INFO, "No places found for this location");
-//			request.getRequestDispatcher("/index.jsp").forward(request, response);
-//		}
 
 		// Forward view
 		request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);

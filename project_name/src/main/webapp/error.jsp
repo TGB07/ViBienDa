@@ -20,12 +20,15 @@
 		<!-- NAV-BAR -->
 		<jsp:include page="navbar.html"/>
 		
+		<!-- Imagen de eror -->
 		<div class=errorImg>
 			<img class="imagenError" alt="Error imagen" src="/img/skyline.png">
 		</div>
 		
+		<!-- Mensaje de error -->
 		<div class=mensajeError>
 			<h1>Algo ha salido mal :(</h1>
+			<!-- Decide el mensaje en funcion del error -->
 			<p><%
 				switch(request.getAttribute("errorType").toString()){
 				case "LLERROR": out.println("No ha sido posible localizar el lugar indicado");break;
