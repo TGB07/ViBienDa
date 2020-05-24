@@ -52,7 +52,7 @@ public class CreateVenuesListController extends HttpServlet {
 		else {
 			//	Si el code es nulo redirigimos a la autenticacion
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
 	
