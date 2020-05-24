@@ -18,16 +18,16 @@ public class NewsResourceTests {
 		String keywords = "Avispa";
 		String keywordsTitulo = "Letal";
 		String orden = "popularity";
-		System.out.println("Test NewsAPI: Probando búsqueda de noticias con '" + keywords + "' y '" + keywordsTitulo + "' ordenado por " + orden);
+		System.out.println("Buscando noticias con '" + keywords + "' y '" + keywordsTitulo + "' ordenado por " + orden);
 		NewsSearch res = nResource.getNewsSearch(keywords, keywordsTitulo, orden);
 		
 		if(res.getTotalResults()==0) {
 			res = null;
 		}
 		if(res != null) {
-			System.out.println("Búsqueda correcta.");
+			System.out.println("Busqueda correcta.");
 		}
-		assertNotNull("Los resultados no pueden estar vacíos.", res);
+		assertNotNull("Los resultados no pueden estar vacios.", res);
 	}
 	
 }

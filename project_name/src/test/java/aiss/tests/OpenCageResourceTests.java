@@ -1,6 +1,7 @@
 package aiss.tests;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.io.UnsupportedEncodingException;
 
@@ -15,17 +16,16 @@ public class OpenCageResourceTests {
 	
 	@Test
 	public void testGetNombre() throws UnsupportedEncodingException {
-		Double lat = 27.6;
-		Double lon = -56.22;
-		System.out.println("Test OpenCage: Probando búsqueda de localización a partir de las coordenadas (" + lat + "," + lon + ")");
+		Double lat = 51.952659;
+		Double lon = 7.632473; 
+		System.out.println("Obtener la localizacion a partir de las coordenadas (" + lat + "," + lon + ")");
 		LLNameSearch res = ocResource.getNombreLL(lat, lon);
 		
-		//	Comprobamos la existencia de resultados
 		if(res.getTotalResults()==0) {
 			res = null;
 		}
 		if(res!=null) {
-			System.out.println("Búsqueda correcta.");
+			System.out.println("Busqueda correcta.");
 		}
 		assertNotNull("Los resultados no pueden estar vacíos.", res);
 	}
@@ -33,17 +33,32 @@ public class OpenCageResourceTests {
 	@Test
 	public void testGetLatLon() throws UnsupportedEncodingException {
 		String localizacion = "New Jersey";
-		System.out.println("Test OpenCage: Probando búsqueda de coordenadas a partir de '" + localizacion + "'");
+		
+		System.out.println("Obtener las coordenadas de '" + localizacion + "'");
 		LLNameSearch res = ocResource.getLatitudLongitud(localizacion);
 		
-		//	Comprobamos la existencia de resultados
 		if(res.getTotalResults()==0) {
 			res = null;
 		}
 		if(res!=null) {
-			System.out.println("Búsqueda correcta.");
+			System.out.println("Busqueda correcta.");
 		}
-		assertNotNull("Los resultados no pueden estar vacíos.", res);
+		assertNotNull("Los resultados no pueden estar vacíos.\n", res);
+	}
+	
+	//TEST DE NULL
+	@Test
+	public void testGetLatLonNull() throws UnsupportedEncodingException {
+		String localizacion = "ESTOVAADEVOLVERNULL!!!";
+		
+		System.out.println("Obtener las coordenadas de '" + localizacion + "'");
+		LLNameSearch res = ocResource.getLatitudLongitud(localizacion);
+		
+		if(res.getTotalResults()==0) {
+			res=null;
+			System.out.println("Fallo correcto");
+		}
+		assertNull("El resultado devuelve null al no existir dicha localizacion", res);
 	}
 
 }

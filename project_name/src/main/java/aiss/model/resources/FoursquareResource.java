@@ -141,23 +141,4 @@ public class FoursquareResource {
 		return fld;
 	}
 	
-	public boolean deleteVenue(String token, String listId, String venueId) {
-		
-		ClientResource cr = null;
-		boolean result=true;
-		
-		String uri = "https://api.foursquare.com/v2/lists/" + listId + "/deleteitem?oauth_token=" + token + "venueId=" + venueId + "&v=20200101";
-		log.log(Level.FINE, "Foursquare DeleteVenue URI:" + uri);
-		
-		try {
-			cr = new ClientResource(uri);
-			cr.post(" ");
-		}
-		catch (ResourceException re) {
-			result=false;
-			System.err.println("Error when deleting a venue of the list" + cr.getResponse().getStatus());
-		}
-		return result;
-	}
-	
 }
