@@ -51,7 +51,8 @@ public class CreateVenuesListController extends HttpServlet {
 		}
 		else {
 			//	Si el code es nulo redirigimos a la autenticacion
-			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
+			log.log(Level.WARNING, "Accediendo a usuario sin token, se manda a la vista de error con el codigo TOKENERROR");
+			request.setAttribute("errorType", "TOKENERROR");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}

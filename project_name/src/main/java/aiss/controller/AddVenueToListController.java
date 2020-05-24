@@ -50,7 +50,7 @@ public class AddVenueToListController extends HttpServlet {
 			request.getRequestDispatcher("/GetAllUserListsController").forward(request, response);
 		} else {
 			//	Si el code es nulo redirigimos a la autenticacion
-			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
+			log.log(Level.WARNING, "No se ha iniciado sesion, debe iniciarla en la pagina de Foursquare");
 			response.sendRedirect("https://foursquare.com/oauth2/authenticate?client_id=YRUTVRBHN10TPG4FAI5HJ1PLV4VIFBL10TSFWT13DAWA4KBD&response_type=code&redirect_uri=http://localhost:8090/GetAllUserListsController");
 		}
 	}

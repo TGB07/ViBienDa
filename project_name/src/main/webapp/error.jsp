@@ -34,6 +34,7 @@
 				case "LLERROR": out.println("No ha sido posible localizar el lugar indicado");break;
 				case "NEWSERROR": out.println("No hay noticias");break;
 				case "TOKENERROR": out.println("No puedes acceder a esta función sin iniciar sesión");break;
+				case "AUTENTERROR": out.println("No ha sido posible autenticar su cuenta, vuelva a intentarlo");break;
 				default: out.println("Error desconocido");break;
 				}
 			%></p>

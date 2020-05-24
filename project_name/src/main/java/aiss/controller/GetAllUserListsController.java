@@ -18,13 +18,14 @@ import aiss.model.foursquare.list.FoursquareList;
 import aiss.model.foursquare.list.Item_;
 import aiss.model.foursquare.listD.Venue;
 import aiss.model.resources.FoursquareResource;
+import aiss.utility.RetryCounter;
 
 public class GetAllUserListsController extends HttpServlet {
-
+		
 	private static final long serialVersionUID = 1L;
 
 	private static final Logger log = Logger.getLogger(GetAllUserListsController.class.getName());
-
+	
 	public GetAllUserListsController() {
 		super();
 	}
@@ -41,10 +42,12 @@ public class GetAllUserListsController extends HttpServlet {
 		//	Obtenemos la variable de sesion
 		HttpSession session = request.getSession();
 		
+		//sacamos el codigo de sesion, en caso de no haber ninguno, lo obtenemos del request
 		String code = (String)session.getAttribute("code");
 		if(code==null) {
 			code = request.getParameter("code");
-		} 
+		}
+		log.log(Level.INFO, "Codigo obtenido: " + code);
 	
 		//	Añadimos a la sesion el codigo asociado a nuestra cuenta proporcionado
 		session.setAttribute("code", code);
@@ -70,9 +73,17 @@ public class GetAllUserListsController extends HttpServlet {
 			
 			//	Comprobamos que la respuesta sea la correcta
 			if (fl == null) {
-				log.log(Level.WARNING, "ERROR RETRIEVING USERS LIST. RETURNING TO INDEX");
-				request.setAttribute("errorType", "TOKENERROR");
-				request.getRequestDispatcher("GetAllUserListsController").forward(request, response);
+				if(RetryCounter.n < 3) {
+					log.log(Level.WARNING, "ERROR RETRIEVING USERS LIST. RETRYING...");
+					RetryCounter.n++;
+					request.getRequestDispatcher("GetAllUserListsController").forward(request, response);
+				}
+				else {
+					log.log(Level.SEVERE, "ERROR RETRIEVING USER LIST. RETRY NUMBER EXCEDED");
+					RetryCounter.n = 0;
+					request.setAttribute("errorType", "AUTENTERROR");
+					request.getRequestDispatcher("/error.jsp").forward(request, response);
+				}
 			} else {
 				//	Obtenemos los objetos asociados a las listas
 				List<Item_> listaDelUsuario = fl.getResponse().getLists().getItems();
@@ -122,7 +133,7 @@ public class GetAllUserListsController extends HttpServlet {
 				request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);
 			}
 		} else {
-			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
+			log.log(Level.FINE, "Accediendo a usuario sin token, se manda a la vista de error con el codigo TOKENERROR");
 			request.setAttribute("errorType", "TOKENERROR");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}

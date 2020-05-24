@@ -62,6 +62,7 @@ public class SearchController extends HttpServlet {
 		Double radio = 10.;
 		if (barQuery == null) {
 			// Se ha realizado el request a traves del mapa interactivo
+			log.log(Level.INFO, "Request realizada a traves del mapa");
 
 			lat = Double.parseDouble(request.getParameter("lat"));
 			lon = Double.parseDouble(request.getParameter("lon"));
@@ -80,7 +81,7 @@ public class SearchController extends HttpServlet {
 
 			} else {
 				// Informamos del error
-				log.log(Level.INFO, "LUGAR NO DISPONIBLE");
+				log.log(Level.WARNING, "LUGAR NO DISPONIBLE");
 				// Establecemos el tipo de error
 				request.setAttribute("errorType", "LLERROR");
 				// Redirigimos a la vista de error
@@ -89,7 +90,8 @@ public class SearchController extends HttpServlet {
 
 		} else {
 			// Se ha realizado el request a traves de la barra de busqueda
-
+			log.log(Level.INFO, "Request realizada a traves de la barra de busqueda");
+			
 			// Cargamos las coordenadas asociadas a la query
 			ocResource = new OpenCageResource();
 			LLNameSearch ocrResponse = ocResource.getLatitudLongitud(barQuery);
@@ -124,7 +126,7 @@ public class SearchController extends HttpServlet {
 //
 //		if (totalDelitos == 0) {
 //			//	Informamos de que no existen datos para la localizacion
-//			log.log(Level.INFO, "No crime data at the given location");
+//			log.log(Level.WARNING, "No crime data at the given location");
 //		} else {
 //			//	Contamos el numero de incidentes de cada tipo
 //			List<ReportType> reportes = coResponse.getReportTypes();
@@ -169,10 +171,12 @@ public class SearchController extends HttpServlet {
 			if (items != null && !items.isEmpty()) {
 				request.setAttribute("lVenues", items);
 			} else {
-				log.log(Level.INFO, "No recommended venues at the given location");
+				log.log(Level.WARNING, "No recommended venues at the given location");
 			}
 		}
-
+		else
+			log.log(Level.WARNING, "No hay ningun resultado para la busqueda");
+		
 		// Forward view
 		request.getRequestDispatcher("/generalStatsView.jsp").forward(request, response);
 	}
