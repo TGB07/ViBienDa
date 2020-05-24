@@ -154,3 +154,50 @@ body {
 	white-space: nowrap;
  	overflow: hidden;
 }
+.leaflet-popup-content-wrapper{
+	background-color: #5EBAFF;
+	opacity: 0.9;
+}
+.leaflet-popup-content-wrapper strong{
+	color: white;
+	font-weight: 800;
+	text-transform: capitalize;
+	font-size: 16px;
+}
+.leaflet-popup-content-wrapper .addVenue label{
+	color: white;
+	opacity: 0.8;
+}
+.leaflet-popup-content-wrapper .addVenue select{
+	background-color: transparent;
+	border-radius: 30px;
+	height: 30px;
+	font-size: 12px;
+	width: 100%;
+	border: 2px solid white;
+	padding-left: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: white;
+	cursor: pointer;
+}
+.leaflet-popup-content-wrapper .addVenue option:not(:checked), option:checked{
+	color: black;
+}
+.leaflet-popup-content-wrapper .addVenue button{
+	border-radius: 30px;
+	margin-top: 10px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: white;
+	border: 2px solid white;
+	color: gray;
+}
+.leaflet-container a.leaflet-popup-close-button{
+	color: white;
+}
+.leaflet-popup-content-wrapper .addVenue button:hover{
+	color: black;
+}
