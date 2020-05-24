@@ -1,6 +1,7 @@
 
 package aiss.model.foursquare.listD;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -25,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "allowMenuUrlEdit",
     "beenHere"
 })
-public class Venue {
+public class Venue implements Serializable{
 
     @JsonProperty("id")
     private String id;

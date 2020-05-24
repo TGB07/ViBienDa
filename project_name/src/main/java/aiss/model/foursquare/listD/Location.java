@@ -1,9 +1,11 @@
 
 package aiss.model.foursquare.listD;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "country",
     "formattedAddress"
 })
-public class Location {
+public class Location implements Serializable{
 
     @JsonProperty("address")
     private String address;

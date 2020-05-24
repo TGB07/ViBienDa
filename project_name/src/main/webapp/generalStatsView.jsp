@@ -36,8 +36,6 @@
 </head>
 <body>
 
-
-
 	<div class=wrapper>
 
 		<!-- NAV-BAR -->
@@ -46,22 +44,28 @@
 		<!-- Parte izquierda grid -->
 		<div class="w3-col s4 w3-blue w3-center">
 			<br> <br>
-			<!-- NOMBRE POR EL QUE SE REALIZA LA BUSQUEDA -->
+			
+			<!-- Nombre introducido en la búsqueda -->
 			<h1>
 				<c:out value="${param.bar}"/>
 				<c:out value="${nombreLL}" />
 			</h1>
-			<!-- Parte de estadisticas de crimeness -->
-
+			
+			<!-- Estadisticas de crimenes -->
 			<div class=parametros>
 				<p>Estadísticas de crímenes</p>
+				
+				<!-- Creamos un form para cada campo de las estadisticas que nos lleve a la vista detallada de estas -->
 				<c:forEach items="${requestScope.incidentes}" var="incidente">
+				
 					<form action=CrimeStatsController method = POST>
 						<input type=hidden name=lat value="${lat}">
 						<input type=hidden name=lon value="${lon}">
 						<input type=hidden name=tipoCrimen value="${incidente.key}">	
 						
-						<button type=submit class = "incidentButton">	
+						<button type=submit class = "incidentButton">
+							
+							<!-- Porcentajes de la vista general -->
 							<span> <c:out value="${incidente.key}:" />
 								<div class="w3-gray w3-round-xlarge gris">		
 									<div class="w3-container w3-green w3-round-xlarge"
@@ -71,9 +75,11 @@
 									</div>
 								</div>
 							</span>
+						
 						</button>
 					</form>
 				</c:forEach>
+				
 			</div>
 		</div>
 
@@ -81,6 +87,7 @@
 		<!-- Parte derecha grid -->
 		<div class="w3-col s8 w3-dark-grey w3-center">
 			
+			<!-- Cuadro de busqueda de las noticias -->
 			<form class="noticiasForm" action="NewsController" method="post">
 				<input name="loc" type="hidden"
 					value="${ param.bar=='' ? nombreLL : param.bar}">
@@ -94,18 +101,20 @@
 					<option value="relevance">Relevancia</option>
 					<option value="publishedAt">Fecha de publicación</option>
 					<option value="popularity">Popularidad de las fuentes</option>
-				</select> <input type="submit"
-					value="Ver noticias" class=noticiasBtn>
+				</select>
+				<input type="submit" value="Ver noticias" class=noticiasBtn>
 			</form>
-			<!-- MAPA -->
+			
+			<!-- Mapa con las venues del lugar de busqueda -->
 			<div id="map"><span class=lugares>LUGARES CERCANOS</span></div>
 			
 			
 			<!-- FORSQUARE LOGIN -->
 			<div class=foursquareLogin>
 				<span class=img><img src='./img/foursquare-logo.png' alt='fs logo'></span>
-				<span class=texto>Inicia sesión con FourSquare para más ventajas!</span>
+				<span class=texto>¡Inicia sesión con FourSquare para más ventajas!</span>
 				
+				<!-- Si no se ha iniciado sesion redirige a la autenticacion con OAuth -->
 				<c:if test="${empty code}">
 					
 					<form action="" method="post">
@@ -118,6 +127,7 @@
 				
 				</c:if>
 				
+				<!-- Si se ha autenticado previamente permite obtener las listas de lugares del usuario -->
 				<c:if test="${not empty code}">
 				
 					<form action="GetAllUserListsController" method="post">
@@ -125,25 +135,26 @@
 						<input type = "submit" id=goToLists style="visibility: hidden;">
 					</form>
 					<span class=loginBtn><button class=btn onclick="document.getElementById('goToLists').click()">Ir a mis listas</button></span>
-					
-					
 				</c:if>
 				
 				
 			</div>
 		</div>
 		
+		<!--
 		<c:set var="lat" value="${lat}"/>
 		<c:set var="lon" value="${lon}"/>
+		-->
 		
+		<!-- Procesamiento de la latitud y longitud para los scripts de js -->
 		<script>
 			var lat = '${lat}';
 			var lon = '${lon}';
 		</script>
 		
-		
-
+		<!-- Procesamiento de las venues de la peticion y de las listas asociadas a un usuario si esta logueado -->
 		<script>
+			//	Array que contenga todas las venues devueltas por la peticion
 			var venues = [];
 			var venue;
 			<c:forEach items="${requestScope.lVenues}" var="venue">
@@ -155,21 +166,23 @@
 				venues.push(venue);
 			</c:forEach>
 			
-			// Añadir a una variable de javascript las listas del usuario (estan en sesion)
+			//	Array que contenga los nombres de las listas y sus ID para añadir venues a las mismas
 			var listas=[];
-			<c:forEach items="${sessionScope.listaLugares}" var="entry">
-				lista = {
-						name:"${entry.key}",
-						id:"${entry.value[0]}",
-				}
-				console.log(lista);
-				listas.push(lista);
+			<c:forEach items="${sessionScope.nombresListas}" var="name">
+				l = {
+						name:"${name}",
+						id:"${sessionScope[name]}",
+				};
+				listas.push(l);
 			</c:forEach>
+			
 		</script>
 
 	</div>
 
 	<br>
+	<!-- Script del mapa de la localizacion con sus venues -->
 	<script type="text/javascript" src="./js/venuesMiniMap.js"></script>
+	
 </body>
 </html>

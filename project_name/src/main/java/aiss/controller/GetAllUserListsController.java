@@ -3,25 +3,20 @@ package aiss.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.restlet.resource.ResourceException;
-
-import aiss.model.foursquare.FoursquareToken;
 import aiss.model.foursquare.list.FoursquareList;
 import aiss.model.foursquare.list.Item_;
-import aiss.model.foursquare.list.Photo_;
 import aiss.model.foursquare.listD.Venue;
 import aiss.model.resources.FoursquareResource;
 
@@ -46,50 +41,46 @@ public class GetAllUserListsController extends HttpServlet {
 		
 		String code = request.getParameter("code");
 
-//		String code = (String) request.getSession().getAttribute("code");
-		request.getSession().setAttribute("code", code);
+		//	Obtenemos la variable de sesion
+		HttpSession session = request.getSession();
+		//	Añadimos a la sesion el codigo asociado a nuestra cuenta proporcionado
+		session.setAttribute("code", code);
+		//	Añadimos a la request el codigo asociado a nuestra cuenta proporcionado
 		request.setAttribute("code", code);
 
+		//	Si el codigo devuelto no es nulo
 		if (code != null) {
-
+			
+			//	Obtenemos el token a traves de otro endpoint en la API
 			FoursquareResource fsResource = new FoursquareResource();
-//			FoursquareToken fsAcessToken= fsResource.getFoursquareAccessToken(code);
-//			try {
-//			String accessToken = fsAcessToken.getAccessToken();
 			String accessToken = fsResource.getFoursquareAccessToken(code);
-
-			if (accessToken == null || accessToken.isEmpty()) {
-				accessToken = (String) request.getSession().getAttribute("accessToken");
-			}
-
-			request.getSession().setAttribute("accessToken", accessToken);
+			
+			//	Añadimos a sesion el token para futuros accesos
+			session.setAttribute("accessToken", accessToken);
+			//	Añadimos a la request el token para futuros accesos
 			request.setAttribute("accessToken", accessToken);
 
 			log.log(Level.FINE, "AccessToken retrieved " + accessToken);
 
+			//	Realizamos la peticion de las listas del usuario
 			FoursquareList fl = fsResource.getUserLists(accessToken);
-
+			
+			//	Comprobamos que la respuesta sea la correcta
 			if (fl == null) {
 				log.log(Level.WARNING, "ERROR RETRIEVING USERS LIST. RETURNING TO INDEX");
 				request.setAttribute("errorType", "TOKENERROR");
 				request.getRequestDispatcher("GetAllUserListsController").forward(request, response);
-			}
-
-			else {
-
+			} else {
+				//	Obtenemos los objetos asociados a las listas
 				List<Item_> listaDelUsuario = fl.getResponse().getLists().getItems();
-//			Map<String, String> infoListasDelUsuario = new HashMap<String, String>();//clave: id lista; valor: nombre lista 
-//			List<aiss.model.foursquare.listD.List> detallesListaUsuario = new ArrayList<aiss.model.foursquare.listD.List>();
-
-				// MAP A CREAR PARA LOS DATOS:
-				// [nombre | descripcion, followers, photo, venues]
+				
+				//	Procesamos en un map los nombres de las listas y sus datos asociados (id, descripcion, venues, etc)
 				Map<String, List<Object>> m = new HashMap<String, List<Object>>();
 				for (int i = 0; i < listaDelUsuario.size(); i++) {
+					//	Obtenemos los datos de la lista
 					Item_ lista = listaDelUsuario.get(i);
 					String id = lista.getId();
 					String name = lista.getName();
-//				Photo_ photo = lista.getPhoto(); 
-
 					aiss.model.foursquare.listD.List detalles = fsResource.getVenuesList(accessToken, id).getResponse()
 							.getList();
 					String description = detalles.getDescription();
@@ -97,38 +88,35 @@ public class GetAllUserListsController extends HttpServlet {
 					List<aiss.model.foursquare.listD.Item_> listaDeItems = detalles.getListItems().getItems();
 
 					List<Venue> venues = new ArrayList<Venue>();
-
 					for (int j = 0; j < listaDeItems.size(); j++) {
 						venues.add(listaDeItems.get(j).getVenue());
 					}
-
+					
+					//	Añadimos a una lista los datos mas relevantes para añadirlos a la sesion
 					List<Object> s = new ArrayList<Object>();
-					s.add(listaDelUsuario.get(i).getId());
+					s.add(id);
 					s.add(description);
 					s.add(followers);
 					s.add(venues);
-
+					
+					session.setAttribute(name, id);
+			
 					if (!m.containsKey(name)) {
 						m.put(name, s);
-					}
-
-					else {
+					} else {
 						List<Object> l = m.get(name);
 						l.add(s);
 						m.put(name, s);
 					}
 				}
+				//	Mantenemos en sesion los nombres de las listas para procesarlos en jsp
+				List<String> listNames = new ArrayList<String>(m.keySet());
+				session.setAttribute("nombresListas", listNames);
 
 				request.setAttribute("listasLugares", m);
-				request.getSession().setAttribute("listaLugares", m);
 				
 				// Forward view
 				request.getRequestDispatcher("/userVenuesView.jsp").forward(request, response);
-//			}
-//			catch (NullPointerException np) {
-//				System.err.println("Error ???? accessToken" + np.getMessage());
-//				request.getRequestDispatcher("/index.jsp").forward(request, response);
-//			}
 			}
 		} else {
 			log.log(Level.FINE, "Accediendo a usuario sin token, se devuelve a la vista de datos de nuevo");
