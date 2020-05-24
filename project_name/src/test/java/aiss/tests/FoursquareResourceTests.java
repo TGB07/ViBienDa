@@ -14,7 +14,7 @@ import aiss.model.resources.FoursquareResource;
 
 public class FoursquareResourceTests {
 
-	String code=""; //hay que iniciar sesion para generar el code y cambiarlo
+	String code="BXMS2GPO4EX4AJGWGA3XCQ2K4TFQ4K2245QEXPXEUSZWVCAE"; //hay que iniciar sesion para generar el code y cambiarlo
 	FoursquareResource fsResource = new FoursquareResource();
 	
 	@Test
