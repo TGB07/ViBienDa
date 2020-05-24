@@ -1,9 +1,9 @@
 {
 	"Foursquare": {
-		"tokenUrl": "https://foursquare.com/oauth2/access_token?client_id=HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC&client_secret=JR3ENW0XR5FAURWCPLZS5INDLFPB4IYOWYDNUXL0AXRWEGVT&grant_type=authorization_code&redirect_uri=https://http://localhost:8090/oauth2callback/Foursquare",
-		"clientId": "HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC",
-		"clientSecret": "JR3ENW0XR5FAURWCPLZS5INDLFPB4IYOWYDNUXL0AXRWEGVT",
-		"authorizationFormUrl": "https://foursquare.com/oauth2/authenticate?client_id=HADL3PWUYW1AT3W0XHX4MQALAY22K1RMD2JIUBX5HXPTJYNC&response_type=code&redirect_uri=https://http://localhost:8090/oauth2callback/Foursquare/?code=",
+		"tokenUrl": "https://foursquare.com/oauth2/access_token?client_id=YRUTVRBHN10TPG4FAI5HJ1PLV4VIFBL10TSFWT13DAWA4KBD&client_secret=FQIHWAEF3FXIXIBY1JHRB2ZRV1LISTUXSTYMQNUMHP4B1M55&grant_type=authorization_code&redirect_uri=https://http://localhost:8090/oauth2callback/Foursquare",
+		"clientId": "YRUTVRBHN10TPG4FAI5HJ1PLV4VIFBL10TSFWT13DAWA4KBD",
+		"clientSecret": "FQIHWAEF3FXIXIBY1JHRB2ZRV1LISTUXSTYMQNUMHP4B1M55",
+		"authorizationFormUrl": "https://foursquare.com/oauth2/authenticate?client_id=YRUTVRBHN10TPG4FAI5HJ1PLV4VIFBL10TSFWT13DAWA4KBD&response_type=code&redirect_uri=https://http://localhost:8090/oauth2callback/Foursquare/?code=",
 		"scopes": []
 	}
 }

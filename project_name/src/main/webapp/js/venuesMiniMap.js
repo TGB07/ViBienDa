@@ -33,7 +33,7 @@ for(var i = 0; i<venues.length; i++){
 	//	Si las listas asociadas al usuario no son nulas añadiremos la opcion de seleccionar la lista a la que añadir el lugar.
 	if(listas.length!==0){
 		seleccion = '<label for="lists">Seleccione una lista</label>' +
-			'<select id="nombresListas" name="nombresListas" form="addVenueForm">';
+			'<select id="listId" name="listId" form="addVenueForm">';
 		for(var j = 0; j<listas.length; j++){
 			seleccion = seleccion + '<option value="' + listas[j].id + '">' + listas[j].name + '</option>';
 			console.log(seleccion);
@@ -42,40 +42,9 @@ for(var i = 0; i<venues.length; i++){
 	}
 
 	marker.bindPopup('<p><strong>' + venue.name + '</strong></p>' +
-			'<form id="addVenueForm" class="addVenue" action="AddVenueToListController" method="POST"' +
-			'<input name="venueId" type="hidden" value="' + venue.id + '">' + 
+			'<form id="addVenueForm" class="addVenue" action="AddVenueToListController" method="POST">' +
+			'<input name="venueId" id="venueId" type="hidden" value="' + venue.id + '">' + 
 			seleccion +
 			'<button type="submit">Añadir lugar</button>' +
 			'</form>');
 }
-
-
-//var seleccion = '';
-//var listasVacias = (listas === undefined || listas.length == 0);
-//
-//for(var i = 0; i<venues.length; i++){
-//	venue = venues[i];
-//	marker = L.marker([venue.lat, venue.lon])
-//		.addTo(map);
-//	//marker.bindPopup(venue.name);
-//	//	Necesitamos enviar el id de la venue y de la lista
-//	
-//	if(!listasVacias){
-//		seleccion = '<label for="lists">' + Seleccione  + '</label>' +
-//			'<select id="listas" name="listsId" form="addVenueForm">';
-//		for(var j = 0; j<listas.length; j++){
-//			//	El array listas que recibimos ha de contener objetos con el nombre y el id de la lista
-//			seleccion = seleccion + '<option value="' + lista[j].id + '">' + lista[j].name + '</option>';
-//		}
-//		seleccion = seleccion + "</select>";
-//	}
-//	
-//	
-//	marker.bindPopup('<p><strong>' + venue.name + '</strong></p>' +
-//			'<form id="addVenueForm" class="addVenue" action="AddVenueToListController" method="POST">' + 
-//			'<input name="venueId" type="hidden" value="' + venue.id + '">' +
-//			seleccion +
-//			'<button type="submit">Añadir lugar</button>' +
-//			'</form>'
-//			);
-//}

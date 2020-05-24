@@ -4,8 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.restlet.data.ChallengeResponse;
-import org.restlet.data.ChallengeScheme;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
@@ -46,9 +44,7 @@ public class FoursquareResource {
 	}
 	
 	public String getFoursquareAccessToken(String code) throws UnsupportedEncodingException {
-		//PARA OBTENER EL ACCESS TOKEN A PARTIR DEL CODIGO OBTENIDO TRAS ACEPTAR EL USUARIO LOS PERMISOS
 		ClientResource cr = null;
-//		FoursquareToken accessToken = null;
 				
 		String uri = "https://foursquare.com/oauth2/access_token?client_id=" + Foursquare_Client_Id + "&client_secret=" + Foursquare_Client_Secret + "&grant_type=authorization_code&redirect_uri=" + CALLBACK_URI + "&code=" + code;
 		log.log(Level.FINE, "FoursquareAccessToken URI: " + uri);
@@ -60,13 +56,7 @@ public class FoursquareResource {
 			cr.setEntityBuffering(true);
 			result= cr.post("",FoursquareToken.class).getAccessToken();
 			
-//			ChallengeResponse chr = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);
-//			chr.setRawValue(result);
-//			cr.setChallengeResponse(chr);
-			
 			result = cr.get(FoursquareToken.class).getAccessToken();
-			
-//			accessToken= cr.get(FoursquareToken.class);
 		}
 		catch (ResourceException re) {
 			System.err.println("Error when retrieving the accessToken" + cr.getResponse().getStatus());
@@ -99,7 +89,8 @@ public class FoursquareResource {
 		ClientResource cr = null;
 		boolean result=true;
 		
-		String uri = "https://api.foursquare.com/v2/lists/" + listId + "/additem?oauth_token=" + token + "venueId=" + venueId + "&v=20200101";
+		String uri = "https://api.foursquare.com/v2/lists/" + listId + "/additem?oauth_token=" + token + "&venueId=" + venueId + "&v=20200101";
+		System.out.println(uri);
 		log.log(Level.FINE, "Foursquare AddVenue URI:" + uri);
 		
 		try {

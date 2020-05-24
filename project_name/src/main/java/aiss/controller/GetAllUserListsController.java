@@ -3,7 +3,6 @@ package aiss.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -39,10 +38,14 @@ public class GetAllUserListsController extends HttpServlet {
 		 * uso.
 		 */
 		
-		String code = request.getParameter("code");
-
 		//	Obtenemos la variable de sesion
 		HttpSession session = request.getSession();
+		
+		String code = (String)session.getAttribute("code");
+		if(code==null) {
+			code = request.getParameter("code");
+		} 
+	
 		//	Añadimos a la sesion el codigo asociado a nuestra cuenta proporcionado
 		session.setAttribute("code", code);
 		//	Añadimos a la request el codigo asociado a nuestra cuenta proporcionado

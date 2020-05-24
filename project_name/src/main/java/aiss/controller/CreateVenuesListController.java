@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.foursquare.FoursquareToken;
 import aiss.model.resources.FoursquareResource;
 
 public class CreateVenuesListController extends HttpServlet {

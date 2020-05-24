@@ -162,6 +162,7 @@
 						name:"${venue.name}",
 						lat:"${venue.location.lat}",
 						lon:"${venue.location.lng}",
+						id:"${venue.id}",
 				};
 				venues.push(venue);
 			</c:forEach>
