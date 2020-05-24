@@ -40,7 +40,7 @@
 <link rel="stylesheet"
 	href="./css/userVenuesView.css">
     
-<title>UserVenuesStatsView</title>
+<title>ViBienDa</title>
 </head>
 
 <body>

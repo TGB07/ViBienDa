@@ -32,7 +32,7 @@
 <!-- CSS -->
 <link rel="stylesheet" href="./css/generalStatsView.css">
 
-<title>GeneralStatsView</title>
+<title>ViBienDa</title>
 </head>
 <body>
 

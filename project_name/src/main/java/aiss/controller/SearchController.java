@@ -113,48 +113,48 @@ public class SearchController extends HttpServlet {
 			}
 		}
 
-////		Load crime data
-//		CrimeometerResource coResource = new CrimeometerResource();
-//
-//		//	Crimenes a partir de las coordenadas		
-//		CrimeStatsLLSearch coResponse = coResource.getCrimeStatsLL(lat, lon);
-//
-//		Integer totalDelitos = coResponse.getTotalIncidents();
-//		
-//		//	Procesamos los datos para obtener un resumen de los mismos
-//		Map<String, Double> incidenteTotal = new HashMap<String, Double>();
-//
-//		if (totalDelitos == 0) {
-//			//	Informamos de que no existen datos para la localizacion
-//			log.log(Level.WARNING, "No crime data at the given location");
-//		} else {
-//			//	Contamos el numero de incidentes de cada tipo
-//			List<ReportType> reportes = coResponse.getReportTypes();
-//
-//			for (ReportType r : reportes) {
-//				incidenteTotal.put(r.getType(), r.getCount().doubleValue());
-//			}
-//
-//			// Calculamos los porcentajes asociados a los distintos tipos de delitos
-//			for (Map.Entry<String, Double> entry : incidenteTotal.entrySet()) {
-//				incidenteTotal.put(entry.getKey(), (entry.getValue().doubleValue() / totalDelitos) * 100);
-//			}
-//			request.setAttribute("incidentes", incidenteTotal);
-//		}
+//		Load crime data
+		CrimeometerResource coResource = new CrimeometerResource();
 
-		// INCIDENTES PARA PROBAR
+		//	Crimenes a partir de las coordenadas		
+		CrimeStatsLLSearch coResponse = coResource.getCrimeStatsLL(lat, lon);
+
+		Integer totalDelitos = coResponse.getTotalIncidents();
+		
+		//	Procesamos los datos para obtener un resumen de los mismos
 		Map<String, Double> incidenteTotal = new HashMap<String, Double>();
-		incidenteTotal.put("incidente1", 10.2);
-		incidenteTotal.put("incidente2", 20.8);
-		incidenteTotal.put("incidente3", 38.5);
-		incidenteTotal.put("incidente4", 11.5);
-		incidenteTotal.put("incidente5", 19.0);
-		incidenteTotal.put("incidente6", 10.2);
-		incidenteTotal.put("incidente7", 20.8);
-		incidenteTotal.put("incidente8", 38.5);
-		incidenteTotal.put("incidente9", 11.5);
-		incidenteTotal.put("incidente10", 19.0);
-		request.setAttribute("incidentes", incidenteTotal);
+
+		if (totalDelitos == 0) {
+			//	Informamos de que no existen datos para la localizacion
+			log.log(Level.WARNING, "No crime data at the given location");
+		} else {
+			//	Contamos el numero de incidentes de cada tipo
+			List<ReportType> reportes = coResponse.getReportTypes();
+
+			for (ReportType r : reportes) {
+				incidenteTotal.put(r.getType(), r.getCount().doubleValue());
+			}
+
+			// Calculamos los porcentajes asociados a los distintos tipos de delitos
+			for (Map.Entry<String, Double> entry : incidenteTotal.entrySet()) {
+				incidenteTotal.put(entry.getKey(), (entry.getValue().doubleValue() / totalDelitos) * 100);
+			}
+			request.setAttribute("incidentes", incidenteTotal);
+		}
+
+//		// INCIDENTES PARA PROBAR
+//		Map<String, Double> incidenteTotal = new HashMap<String, Double>();
+//		incidenteTotal.put("incidente1", 10.2);
+//		incidenteTotal.put("incidente2", 20.8);
+//		incidenteTotal.put("incidente3", 38.5);
+//		incidenteTotal.put("incidente4", 11.5);
+//		incidenteTotal.put("incidente5", 19.0);
+//		incidenteTotal.put("incidente6", 10.2);
+//		incidenteTotal.put("incidente7", 20.8);
+//		incidenteTotal.put("incidente8", 38.5);
+//		incidenteTotal.put("incidente9", 11.5);
+//		incidenteTotal.put("incidente10", 19.0);
+//		request.setAttribute("incidentes", incidenteTotal);
 
 		// Load recommended venues
 

@@ -18,6 +18,9 @@
   	
   	<!-- CSS -->
   	<link rel="stylesheet" href="./css/parameterStatsView.css">
+  	
+  	<title>ViBienDa</title>
+  	
   </head>
   
   <body>

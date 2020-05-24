@@ -73,7 +73,7 @@ public class GetAllUserListsController extends HttpServlet {
 			
 			//	Comprobamos que la respuesta sea la correcta
 			if (fl == null) {
-				if(RetryCounter.n < 3) {
+				if(RetryCounter.n < 10) {
 					log.log(Level.WARNING, "ERROR RETRIEVING USERS LIST. RETRYING...");
 					RetryCounter.n++;
 					request.getRequestDispatcher("GetAllUserListsController").forward(request, response);

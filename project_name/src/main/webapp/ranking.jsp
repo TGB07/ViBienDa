@@ -13,6 +13,9 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 		
 		<link rel="stylesheet" href="./css/ranking.css">
+		
+		<title>ViBienDa</title>
+		
 	</head>
 	
 <body>

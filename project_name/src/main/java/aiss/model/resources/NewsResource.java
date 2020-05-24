@@ -13,7 +13,9 @@ import aiss.model.news.NewsSearch;
 
 public class NewsResource {
 
-	//private static final String NEWS_API_KEY = "07cecfd3cd97455b87fae72871cefe05";
+//	private static final String NEWS_API_KEY = "07cecfd3cd97455b87fae72871cefe05";
+	
+	//API PRUEBAS
 	private static final String NEWS_API_KEY = "32ac6198302142a7935dfae92fd12d99";
 	private static final Logger log = Logger.getLogger(NewsResource.class.getName());
 

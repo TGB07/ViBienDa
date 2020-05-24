@@ -13,7 +13,7 @@
 	<!-- NavBar import -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">	
 	<link rel="stylesheet" href="./css/newsView.css">
-<title>NewsView</title>
+<title>ViBienDa</title>
 </head>
 <body>
 	
