@@ -26,18 +26,18 @@
 			<div id="mySidebar" class="sidebar">
 			    
 			    <h2>Selección de zona</h2>
-				<form action="/action_page.php">
+				<form action="SearchController" autocomplete="off" method="post">
 					<label for="state">Selecciona estado:</label>
-					<input list="state" placeholder="Selecciona un estado" required="required"> 
+					<input list="state" placeholder="Selecciona un estado" required="required" name="bar"> 
 					<datalist id="state">
-						<option value="AL">Alabama</option>
-						<option value="AK">Alaska</option>
-						<option value="AZ">Arizona</option>
-						<option value="AR">Arkansas</option>
-						<option value="CA">California</option>
-						<option value="CO">Colorado</option>
-						<option value="WA">Washington</option>
-					</datalist> <input type="submit" value="Buscar" disabled>
+						<option value="Alabama">AL</option>
+						<option value="Alaska">AK</option>
+						<option value="Arizona">AZ</option>
+						<option value="Arkansas">AR</option>
+						<option value="California">CA</option>
+						<option value="Colorado">CO</option>
+						<option value="Washington">WA</option>
+					</datalist> <input type="submit" value="Buscar">
 				</form>			
 		  	</div>
 			<div id = "btn" class="btn" onclick="toggleNav(this)">
@@ -56,27 +56,27 @@
 			</ul>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="./img/casa1.jpg" alt="casa1" width="1100" height="500">
+					<img src="./img/top1.jpg" alt="top1" width="100vw" height="100vh">
 					<div class="carousel-caption">
 						<h3>1º</h3>
-						<a href="linkAOferta"> Primera casita </a>
-						<p>topoten</p>
+						<p> Clarks Ville </p>
+						<p> Tenessee </p>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="./img/casa2.jpg" alt="casa2" width="1100" height="500">
+					<img src="./img/top2.jpg" alt="top2" width="100vw" height="100vh">
 					<div class="carousel-caption">
 						<h3>2º</h3>
-						<a href="linkAOferta"> Segunda casita </a>
-						<p>Vistas al mar</p>
+						<p> Round rock </p>
+						<p> Texas </p>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="./img/casa3.jpg" alt="casa3" width="1100" height="500">
+					<img src="./img/top3.jpg" alt="casa3" width="100vw" height="100vh">
 					<div class="carousel-caption">
 						<h3>3º</h3>
-						<a href="linkAOferta"> Tercera casita </a>
-						<p>no ta mal</p>
+						<p> Fishers </p>
+						<p> Indiana </p>
 					</div>
 				</div>
 			</div>

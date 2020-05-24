@@ -23,7 +23,7 @@ public class OpenCageResource {
 		LLNameSearch llnameSearch=null;
 		
 		String queryFormatted = URLEncoder.encode(query, "UTF-8");
-		String uri = "https://api.opencagedata.com/geocode/v1/json?q=" + queryFormatted +"&key=" + OpenCage_API_KEY + "&language=es&pretty=1&no_annotations=1&limit=1&min_confidence=3";
+		String uri = "https://api.opencagedata.com/geocode/v1/json?q=" + queryFormatted +"&key=" + OpenCage_API_KEY + "&language=es&pretty=1&no_annotations=1&language=es&limit=1";
 		
 		log.log(Level.FINE, "OpenCage URI: " + uri);
 		
